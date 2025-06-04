@@ -78,7 +78,7 @@ void main() {
     );
   });
 
-  group('pary', () {
+  group('pray', () {
     test('When Cleric pray for 0 seconds and it returns 0.', () {
       // given
       final cleric = Cleric(name: 'name');
