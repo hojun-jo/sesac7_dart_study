@@ -22,6 +22,11 @@ class Cleric {
   }
 
   int pray(int seconds) {
+    if (seconds == 0) {
+      print('pray를 실행하지 않습니다. 현재 MP: $mp');
+      return 0;
+    }
+
     if (mp == maxMp) {
       print('MP가 이미 최대입니다. 현재 MP: $mp');
       return 0;
