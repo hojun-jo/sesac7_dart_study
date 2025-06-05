@@ -16,7 +16,7 @@ void main() {
 
         // then
         expect(cleric.hp, Cleric.maxHp);
-        expect(cleric.mp, 5);
+        expect(cleric.mp, Cleric.selfAidMp);
       },
     );
 
@@ -24,14 +24,16 @@ void main() {
       'When Cleric has 6 mp and uses selfAid, Cleric has 50 hp and 1 mp.',
       () {
         // given
-        final cleric = Cleric(name: 'name', mp: 6);
+        final selfAidEdge = Cleric.selfAidMp + 1;
+        final expectedMp = selfAidEdge - Cleric.selfAidMp;
+        final cleric = Cleric(name: 'name', mp: selfAidEdge);
 
         // when
         cleric.selfAid();
 
         // then
         expect(cleric.hp, Cleric.maxHp);
-        expect(cleric.mp, 1);
+        expect(cleric.mp, expectedMp);
       },
     );
 
@@ -39,41 +41,45 @@ void main() {
       'When Cleric has 5 mp and uses selfAid, Cleric has 50 hp and 0 mp.',
       () {
         // given
-        final cleric = Cleric(name: 'name', mp: 5);
+        final expectedMp = Cleric.selfAidMp - Cleric.selfAidMp;
+        final cleric = Cleric(name: 'name', mp: Cleric.selfAidMp);
 
         // when
         cleric.selfAid();
 
         // then
         expect(cleric.hp, Cleric.maxHp);
-        expect(cleric.mp, 0);
+        expect(cleric.mp, expectedMp);
       },
     );
 
     test('When Cleric has 4 mp and uses selfAid, its fail.', () {
       // given
-      final cleric = Cleric(name: 'name', mp: 4);
+      final selfAidEdge = Cleric.selfAidMp - 1;
+      final cleric = Cleric(name: 'name', mp: selfAidEdge);
 
       // when
       cleric.selfAid();
 
       // then
       expect(cleric.hp, Cleric.maxHp);
-      expect(cleric.mp, 4);
+      expect(cleric.mp, selfAidEdge);
     });
 
     test(
       'When Cleric has 10 hp and uses selfAid, Cleric has 50 hp and 5 mp.',
       () {
         // given
-        final cleric = Cleric(name: 'name', hp: 10);
+        final lowHp = 10;
+        final expectedMp = Cleric.maxMp - Cleric.selfAidMp;
+        final cleric = Cleric(name: 'name', hp: lowHp);
 
         // when
         cleric.selfAid();
 
         // then
         expect(cleric.hp, Cleric.maxHp);
-        expect(cleric.mp, 5);
+        expect(cleric.mp, expectedMp);
       },
     );
   });
@@ -84,23 +90,25 @@ void main() {
       final cleric = Cleric(name: 'name');
 
       // when
-      final result = cleric.pray(0);
+      final result = cleric.pray(Cleric.didNotPray);
 
       // then
-      expect(result, 0);
+      expect(result, Cleric.didNotPray);
     });
 
     test(
       'When Cleric has max mp, pray for 1 seconds and it returns 0. And Cleric has max mp.',
       () {
         // given
+        final prayEdge = Cleric.didNotPray + 1;
+        final expectedPrayResult = 0;
         final cleric = Cleric(name: 'name');
 
         // when
-        final result = cleric.pray(1);
+        final result = cleric.pray(prayEdge);
 
         // then
-        expect(result, 0);
+        expect(result, expectedPrayResult);
         expect(cleric.mp, Cleric.maxMp);
       },
     );
@@ -110,20 +118,20 @@ void main() {
       () {
         // given
         final initialMp = 5;
-        final praySeconds = 1;
+        final prayEdge = Cleric.didNotPray + 1;
         final cleric = Cleric(name: 'name', mp: initialMp);
 
         // when
-        final result = cleric.pray(praySeconds);
+        final result = cleric.pray(prayEdge);
 
         // then
         expect(
-          randomWeight.map((weight) => weight + praySeconds).contains(result),
+          randomWeight.map((weight) => weight + prayEdge).contains(result),
           isTrue,
         );
         expect(
           randomWeight
-              .map((weight) => weight + initialMp + praySeconds)
+              .map((weight) => weight + initialMp + prayEdge)
               .contains(cleric.mp),
           isTrue,
         );
@@ -135,20 +143,20 @@ void main() {
       () {
         // given
         final initialMp = 0;
-        final praySeconds = 1;
+        final prayEdge = Cleric.didNotPray + 1;
         final cleric = Cleric(name: 'name', mp: initialMp);
 
         // when
-        final result = cleric.pray(praySeconds);
+        final result = cleric.pray(prayEdge);
 
         // then
         expect(
-          randomWeight.map((weight) => weight + praySeconds).contains(result),
+          randomWeight.map((weight) => weight + prayEdge).contains(result),
           isTrue,
         );
         expect(
           randomWeight
-              .map((weight) => weight + initialMp + praySeconds)
+              .map((weight) => weight + initialMp + prayEdge)
               .contains(cleric.mp),
           isTrue,
         );
@@ -159,13 +167,14 @@ void main() {
       'When Cleric has 9 mp, pray for 1 seconds and it returns 1. And Cleric has max mp.',
       () {
         // given
+        final prayEdge = Cleric.didNotPray + 1;
         final cleric = Cleric(name: 'name', mp: 9);
 
         // when
-        final result = cleric.pray(1);
+        final result = cleric.pray(prayEdge);
 
         // then
-        expect(result, 1);
+        expect(result, prayEdge);
         expect(cleric.mp, Cleric.maxMp);
       },
     );
