@@ -3,13 +3,60 @@ import 'package:test/test.dart';
 
 void main() {
   const List<int> randomWeight = [0, 1, 2];
+  const String name = 'name';
+
+  group('constructor', () {
+    test('When create a Cleric with name, hp and mp are max.', () {
+      // given
+      // when
+      final cleric = Cleric(name);
+
+      // then
+      expect(cleric.name, name);
+      expect(cleric.hp, Cleric.maxHp);
+      expect(cleric.mp, Cleric.maxMp);
+    });
+
+    test(
+      'When create a Cleric with name and hp, name and hp are given vlaue, mp are max.',
+      () {
+        // given
+        final givenHp = 10;
+
+        // when
+        final cleric = Cleric(name, hp: givenHp);
+
+        // then
+        expect(cleric.name, name);
+        expect(cleric.hp, givenHp);
+        expect(cleric.mp, Cleric.maxMp);
+      },
+    );
+
+    test(
+      'When create a Cleric with name and hp, then name, hp, mp are given vlaue.',
+      () {
+        // given
+        final givenHp = 10;
+        final givenMp = 5;
+
+        // when
+        final cleric = Cleric(name, hp: givenHp, mp: givenMp);
+
+        // then
+        expect(cleric.name, name);
+        expect(cleric.hp, givenHp);
+        expect(cleric.mp, givenMp);
+      },
+    );
+  });
 
   group('selfAid', () {
     test(
-      'When Create a Cleric and use selfAid, Cleric has 50 hp and 5 mp.',
+      'When create a Cleric and use selfAid, Cleric has 50 hp and 5 mp.',
       () {
         // given
-        final cleric = Cleric('name');
+        final cleric = Cleric(name);
 
         // when
         cleric.selfAid();
@@ -26,7 +73,7 @@ void main() {
         // given
         final selfAidEdge = Cleric.selfAidMp + 1;
         final expectedMp = selfAidEdge - Cleric.selfAidMp;
-        final cleric = Cleric('name', mp: selfAidEdge);
+        final cleric = Cleric(name, mp: selfAidEdge);
 
         // when
         cleric.selfAid();
@@ -42,7 +89,7 @@ void main() {
       () {
         // given
         final expectedMp = Cleric.selfAidMp - Cleric.selfAidMp;
-        final cleric = Cleric('name', mp: Cleric.selfAidMp);
+        final cleric = Cleric(name, mp: Cleric.selfAidMp);
 
         // when
         cleric.selfAid();
@@ -56,7 +103,7 @@ void main() {
     test('When Cleric has 4 mp and uses selfAid, its fail.', () {
       // given
       final selfAidEdge = Cleric.selfAidMp - 1;
-      final cleric = Cleric('name', mp: selfAidEdge);
+      final cleric = Cleric(name, mp: selfAidEdge);
 
       // when
       cleric.selfAid();
@@ -72,7 +119,7 @@ void main() {
         // given
         final lowHp = 10;
         final expectedMp = Cleric.maxMp - Cleric.selfAidMp;
-        final cleric = Cleric('name', hp: lowHp);
+        final cleric = Cleric(name, hp: lowHp);
 
         // when
         cleric.selfAid();
@@ -87,7 +134,7 @@ void main() {
   group('pray', () {
     test('When Cleric pray for 0 seconds and it returns 0.', () {
       // given
-      final cleric = Cleric('name');
+      final cleric = Cleric(name);
 
       // when
       final result = cleric.pray(Cleric.didNotPray);
@@ -102,7 +149,7 @@ void main() {
         // given
         final prayEdge = Cleric.didNotPray + 1;
         final expectedPrayResult = 0;
-        final cleric = Cleric('name');
+        final cleric = Cleric(name);
 
         // when
         final result = cleric.pray(prayEdge);
@@ -119,7 +166,7 @@ void main() {
         // given
         final initialMp = 5;
         final prayEdge = Cleric.didNotPray + 1;
-        final cleric = Cleric('name', mp: initialMp);
+        final cleric = Cleric(name, mp: initialMp);
 
         // when
         final result = cleric.pray(prayEdge);
@@ -144,7 +191,7 @@ void main() {
         // given
         final initialMp = 0;
         final prayEdge = Cleric.didNotPray + 1;
-        final cleric = Cleric('name', mp: initialMp);
+        final cleric = Cleric(name, mp: initialMp);
 
         // when
         final result = cleric.pray(prayEdge);
@@ -168,7 +215,7 @@ void main() {
       () {
         // given
         final prayEdge = Cleric.didNotPray + 1;
-        final cleric = Cleric('name', mp: 9);
+        final cleric = Cleric(name, mp: 9);
 
         // when
         final result = cleric.pray(prayEdge);
