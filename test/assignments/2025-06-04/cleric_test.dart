@@ -18,7 +18,7 @@ void main() {
     });
 
     test(
-      'When create a Cleric with name and hp, name and hp are given vlaue, mp are max.',
+      'When create a Cleric with name and hp, name and hp are given value, mp are max.',
       () {
         // given
         final givenHp = 10;
@@ -34,7 +34,7 @@ void main() {
     );
 
     test(
-      'When create a Cleric with name and hp, then name, hp, mp are given vlaue.',
+      'When create a Cleric with name, hp, mp, then name, hp, mp are given value.',
       () {
         // given
         final givenHp = 10;
