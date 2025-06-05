@@ -9,7 +9,7 @@
 ```dart
 class SomeClass {
 	String name;
-	int number
+	int number;
 
 	SomeClass(this.name, this.number);
 }
@@ -20,7 +20,7 @@ code block
 ```dart
 class SomeClass {
 	String name;
-	int number
+	int number;
 
 	SomeClass(this.name, this.number) {
 		// some initialization
@@ -46,7 +46,7 @@ const int someNumber = 1;
 
 class SomeClass {
 	String name;
-	int number
+	int number;
 
 	SomeClass(this.name, this.number);
 
@@ -63,7 +63,7 @@ class SomeClass {
 ```dart
 class SomeClass {
 	final String name;
-	final int number
+	final int number;
 
 	const SomeClass(this.name, this.number);
 }
@@ -74,7 +74,7 @@ class SomeClass {
 ```dart
 class SomeClass {
 	String name;
-	int number
+	int number;
 
 	SomeClass(this.name, this.number);
 
@@ -122,7 +122,7 @@ initializer list
 ```dart
 class SomeClass {
 	String name;
-	int number
+	int number;
 
 	SomeClass.fromJson(Map<String, int> json)
 		: this.name = json['name']!,
