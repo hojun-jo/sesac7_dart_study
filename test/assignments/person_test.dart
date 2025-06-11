@@ -5,7 +5,11 @@ void main() {
   const String defaultName = 'name';
   const int defaultBirthYear = 1996;
 
-  final int thisYear = DateTime.now().year;
+  late int thisYear;
+
+  setUp(() {
+    thisYear = DateTime.now().year;
+  });
 
   group('constructor', () {
     test('When create a person, the name, birthYear are given value.', () {
