@@ -27,7 +27,7 @@ void main() {
       expect(() => wand.name = null, throwsException);
     });
 
-    test('Attempting to set 2 to a name throws an exception.', () {
+    test('Attempting to set 2 characters to a name throws an exception.', () {
       // given
       final twoLengthName = 'ab';
       final wand = Wand(name, power: defaultPower);
@@ -37,7 +37,7 @@ void main() {
       expect(() => wand.name = twoLengthName, throwsException);
     });
 
-    test('Attempting to set 3 to a name, name is given value.', () {
+    test('Attempting to set 3 characters to a name, name is given value.', () {
       // given
       final threeLengthName = 'abc';
       final wand = Wand(name, power: defaultPower);

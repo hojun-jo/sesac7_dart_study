@@ -56,7 +56,7 @@ void main() {
       expect(() => wizard.name = null, throwsException);
     });
 
-    test('Put 2 chracter to a name, it throws an exception.', () {
+    test('Put 2 characters to a name, it throws an exception.', () {
       // given
       final twoLengthName = 'ab';
 
@@ -65,7 +65,7 @@ void main() {
       expect(() => wizard.name = twoLengthName, throwsException);
     });
 
-    test('Put 3 chracter to a name, name is given value.', () {
+    test('Put 3 characters to a name, name is given value.', () {
       // given
       final threeLengthName = 'abc';
 
