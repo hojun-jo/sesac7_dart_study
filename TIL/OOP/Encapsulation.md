@@ -36,7 +36,7 @@ class Wizard {
 
   set hp(int value) {
     if (value < minHp) {
-      _hp = minHp;
+      value = minHp;
     }
 
     _hp = value;
