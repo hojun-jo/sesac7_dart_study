@@ -11,17 +11,17 @@ final person3 = {'name': '홍길동', 'age': 20};
 ## List
 - 순서, 중복 있음
 ```dart
-final List<int> sometings1 = [];
-final sometings2 = <int>[];
-final sometings3 = [1, 2, 3];
+final List<int> somethings1 = [];
+final somethings2 = <int>[];
+final somethings3 = [1, 2, 3];
 ```
 
 ## Set
 - 순서, 중복 없음
 ```dart
-final Set<int> sometings1 = {};
-final sometings2 = <int>{};
-final sometings3 = {1, 2, 3};
+final Set<int> somethings1 = {};
+final somethings2 = <int>{};
+final somethings3 = {1, 2, 3};
 ```
 
 ## 선택 기준
