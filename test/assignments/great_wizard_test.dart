@@ -37,7 +37,7 @@ void main() {
   group('heal', () {
     test('If MP is less than 5, the hero\'s HP remains the same.', () {
       // given
-      final lessThanHealCost = 4;
+      final lessThanHealCost = GreatWizard.healCost - 1;
       final expectedHp = 10;
       final wizard = GreatWizard(
         defaultName,
@@ -58,10 +58,10 @@ void main() {
       'If MP is greater than 5, the hero\'s HP is increased by 25 and the wizard\'s MP is decreased by 5.',
       () {
         // given
-        final greaterThanHealCost = 5;
+        final greaterThanHealCost = GreatWizard.healCost;
         final expectedMp = 0;
         final initialHp = 10;
-        final expectedHp = 35;
+        final expectedHp = initialHp + GreatWizard.healAmount;
         final wizard = GreatWizard(
           defaultName,
           hp: defaultHp,
@@ -82,7 +82,7 @@ void main() {
   group('superHeal', () {
     test('If MP is less than 50, the hero\'s HP remains the same.', () {
       // given
-      final lessThanHealCost = 49;
+      final lessThanHealCost = GreatWizard.healCost - 1;
       final expectedHp = 10;
       final wizard = GreatWizard(
         defaultName,
@@ -103,7 +103,7 @@ void main() {
       'If MP is greater than 50, the hero\'s HP is increased by maxHp and the wizard\'s MP is decreased by 50.',
       () {
         // given
-        final greaterThanHealCost = 50;
+        final greaterThanHealCost = GreatWizard.superHealCost;
         final expectedMp = 0;
         final initialHp = 10;
         final wizard = GreatWizard(

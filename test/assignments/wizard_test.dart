@@ -169,7 +169,7 @@ void main() {
   group('heal', () {
     test('If MP is less than 10, the hero\'s HP remains the same.', () {
       // given
-      final lessThanHealCost = 9;
+      final lessThanHealCost = Wizard.healCost - 1;
       final expectedHp = 10;
       final wizard = Wizard(defaultName, hp: defaultHp, mp: lessThanHealCost);
       final hero = Hero(heroName, hp: expectedHp);
@@ -186,10 +186,10 @@ void main() {
       'If MP is greater than 10, the hero\'s HP is increased by 20 and the wizard\'s MP is decreased by 10.',
       () {
         // given
-        final greaterThanHealCost = 10;
+        final greaterThanHealCost = Wizard.healCost;
         final expectedMp = 0;
         final initialHp = 10;
-        final expectedHp = 30;
+        final expectedHp = initialHp + Wizard.healAmount;
         final wizard = Wizard(
           defaultName,
           hp: defaultHp,
