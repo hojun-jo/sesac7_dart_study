@@ -4,12 +4,13 @@ import 'package:modu_3_dart_study/assignments/slime.dart';
 class PoisonSlime extends Slime {
   static const maxPoisonCount = 5;
   static const minPoisonCount = 0;
-  static const poisonDecreaseRate = 0.25;
+  static const poisonDecreaseRate = 0.2;
   static const poisonCountDecrease = 1;
 
-  int _poisonCount = maxPoisonCount;
+  int _poisonCount;
 
-  PoisonSlime(super.suffix);
+  PoisonSlime(super.suffix, {int poisonCount = maxPoisonCount})
+    : _poisonCount = poisonCount;
 
   int get poisonCount => _poisonCount;
 
@@ -17,7 +18,7 @@ class PoisonSlime extends Slime {
   void attack(Hero hero) {
     super.attack(hero);
 
-    if (_poisonCount < minPoisonCount) return;
+    if (_poisonCount <= minPoisonCount) return;
 
     print('추가로, 독 포자를 살포했다!');
     hero.decreaseHp((Hero.maxHp * poisonDecreaseRate).toInt());
