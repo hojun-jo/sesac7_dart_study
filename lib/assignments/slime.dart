@@ -1,8 +1,8 @@
 import 'package:modu_3_dart_study/assignments/hero.dart';
 
 class Slime {
-  static const maxHp = 50;
-  static const damage = 10;
+  static const int maxHp = 50;
+  static const int damage = 10;
 
   final String suffix;
   final int hp;

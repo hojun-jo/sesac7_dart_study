@@ -2,10 +2,10 @@ import 'package:modu_3_dart_study/assignments/hero.dart';
 import 'package:modu_3_dart_study/assignments/wizard.dart';
 
 class GreatWizard extends Wizard {
-  static const maxMp = 150;
-  static const healCost = 5;
-  static const healAmount = 25;
-  static const superHealCost = 50;
+  static const int maxMp = 150;
+  static const int healCost = 5;
+  static const int healAmount = 25;
+  static const int superHealCost = 50;
 
   GreatWizard(super.name, {required super.hp, super.mp = maxMp});
 

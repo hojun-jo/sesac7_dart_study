@@ -1,6 +1,6 @@
 class Hero {
-  static const maxHp = 50;
-  static const minHp = 0;
+  static const int maxHp = 50;
+  static const int minHp = 0;
 
   final String name;
   int _hp;

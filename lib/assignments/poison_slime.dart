@@ -2,10 +2,10 @@ import 'package:modu_3_dart_study/assignments/hero.dart';
 import 'package:modu_3_dart_study/assignments/slime.dart';
 
 class PoisonSlime extends Slime {
-  static const maxPoisonCount = 5;
-  static const minPoisonCount = 0;
-  static const poisonDecreaseRate = 0.2;
-  static const poisonCountDecrease = 1;
+  static const int maxPoisonCount = 5;
+  static const int minPoisonCount = 0;
+  static const double poisonDecreaseRate = 0.2;
+  static const int poisonCountDecrease = 1;
 
   int _poisonCount;
 
