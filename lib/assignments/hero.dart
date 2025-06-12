@@ -15,11 +15,12 @@ class Hero {
     }
 
     print('$name이/가 $damage의 피해를 입었습니다.');
+    var actualDamage = damage;
     if (_hp - damage < minHp) {
-      damage = _hp;
+      actualDamage = _hp;
     }
 
-    _hp -= damage;
+    _hp -= actualDamage;
     printCurrentHp();
   }
 
@@ -29,11 +30,12 @@ class Hero {
     }
 
     print('$name이/가 $heal의 회복을 받았습니다.');
+    var actualHeal = heal;
     if (_hp + heal > maxHp) {
-      heal = maxHp - _hp;
+      actualHeal = maxHp - _hp;
     }
 
-    _hp += heal;
+    _hp += actualHeal;
     printCurrentHp();
   }
 
