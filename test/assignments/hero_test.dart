@@ -28,7 +28,7 @@ void main() {
   });
 
   group('decreaseHp', () {
-    test('Hero has 50 HP minus 50, HP becomes 0.', () {
+    test('Hero has 50 HP and minus 50, HP becomes 0.', () {
       // given
       final hero = Hero(defaultName);
       final zeroHp = 0;
@@ -40,7 +40,7 @@ void main() {
       expect(hero.hp, zeroHp);
     });
 
-    test('Hero has 50 HP minus 51, HP becomes 0.', () {
+    test('Hero has 50 HP and minus 51, HP becomes 0.', () {
       // given
       final hero = Hero(defaultName);
       final zeroHp = 0;
@@ -53,7 +53,7 @@ void main() {
       expect(hero.hp, zeroHp);
     });
 
-    test('Hero has 0 HP minus 1, it throws exception.', () {
+    test('Hero has 0 HP and minus 1, it throws exception.', () {
       // given
       final zeroHp = 0;
       final hero = Hero(defaultName, hp: zeroHp);
@@ -62,6 +62,43 @@ void main() {
       // when
       // then
       expect(() => hero.decreaseHp(damage), throwsException);
+    });
+  });
+
+  group('increaseHp', () {
+    // max + 1, max - 1 + 2, 0 + max
+    test('Hero has 50 HP and plus 1, it throws exception.', () {
+      // given
+      final hero = Hero(defaultName);
+      final heal = 1;
+
+      // when
+      // then
+      expect(() => hero.increaseHp(heal), throwsException);
+    });
+
+    test('Hero has 49 HP and plus 2, HP becomes 50.', () {
+      // given
+      final givenHp = Hero.maxHp - 1;
+      final hero = Hero(defaultName, hp: givenHp);
+      final heal = 2;
+
+      // when
+      hero.increaseHp(heal);
+
+      // then
+      expect(hero.hp, Hero.maxHp);
+    });
+
+    test('Hero has 0 HP and plus 50, HP becomes 50.', () {
+      // given
+      final hero = Hero(defaultName, hp: Hero.minHp);
+
+      // when
+      hero.increaseHp(Hero.maxHp);
+
+      // then
+      expect(hero.hp, Hero.maxHp);
     });
   });
 }
