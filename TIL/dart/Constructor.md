@@ -28,6 +28,16 @@ class SomeClass {
 }
 ```
 
+파라미터 이름 없이 사용하지만 기본값 할당 가능
+```dart
+class SomeClass {
+  String name;
+  int number;
+
+  SomeClass(this.name, [this.number = 5]);
+}
+```
+
 ### Default constructor
 기본으로 제공됨
 - 생성자 구현 없을 경우
