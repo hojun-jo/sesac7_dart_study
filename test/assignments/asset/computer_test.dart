@@ -23,7 +23,7 @@ void main() {
 
   group('constructor', () {
     test(
-      'When a book is created with name, price, color, isbn, and weight, it contains the given values.',
+      'When a Computer is created with name, price, color, makerName, and weight, it contains the given values.',
       () {
         // given
         // when
@@ -39,7 +39,7 @@ void main() {
   });
 
   group('weight', () {
-    test('Throws an exception if the weight is less than zero.', () {
+    test('Throws an exception if the weight is less than Thing.minWeight.', () {
       // given
       final lessThanZero = Thing.minWeight - 1;
 
@@ -48,15 +48,18 @@ void main() {
       expect(() => computer.weight = lessThanZero, throwsException);
     });
 
-    test('If the weight is greater than zero, it has that value.', () {
-      // given
-      final moreThanZero = Thing.minWeight + 1;
+    test(
+      'If the weight is greater than Thing.minWeight, it has that value.',
+      () {
+        // given
+        final moreThanZero = Thing.minWeight + 1;
 
-      // when
-      computer.weight = moreThanZero;
+        // when
+        computer.weight = moreThanZero;
 
-      // then
-      expect(computer.weight, moreThanZero);
-    });
+        // then
+        expect(computer.weight, moreThanZero);
+      },
+    );
   });
 }
