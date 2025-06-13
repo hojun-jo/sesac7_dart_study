@@ -1,13 +1,12 @@
-class Book {
-  final String name;
-  final int price;
-  final String color;
+import 'package:modu_3_dart_study/assignments/asset/tangible_asset.dart';
+
+class Book extends TangibleAsset {
   final String isbn;
 
   Book(
-    this.name, {
-    required this.price,
-    required this.color,
+    super.name, {
+    required super.price,
+    required super.color,
     required this.isbn,
   });
 }
