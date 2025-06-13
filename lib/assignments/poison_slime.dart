@@ -9,7 +9,7 @@ class PoisonSlime extends Slime {
 
   int _poisonCount;
 
-  PoisonSlime(super.suffix, {int poisonCount = maxPoisonCount})
+  PoisonSlime(super.suffix, {super.hp, int poisonCount = maxPoisonCount})
     : _poisonCount = poisonCount;
 
   int get poisonCount => _poisonCount;
