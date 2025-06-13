@@ -42,7 +42,7 @@ void main() {
       expect(() => book.weight = lessThanZero, throwsException);
     });
 
-    test('Throws an exception if the weight is less than zero.', () {
+    test('If the weight is greater than zero, it has that value.', () {
       // given
       final moreThanZero = Thing.minWeight + 1;
 
