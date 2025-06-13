@@ -51,7 +51,7 @@ void main() {
 
 ### Named constructor
 ```dart
-const String someName = 'someName';
+const String someName = 'someName';
 const int someNumber = 1;
 
 class SomeClass {
