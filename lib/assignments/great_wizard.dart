@@ -15,7 +15,7 @@ class GreatWizard extends Wizard {
       hero: hero,
       healCost: healCost,
       healAmount: healAmount,
-      message: '힐을 시전했습니다. 대상 HP: ${hero.hp}',
+      message: '힐을 시전했습니다.',
     );
   }
 
@@ -24,7 +24,7 @@ class GreatWizard extends Wizard {
       hero: hero,
       healCost: superHealCost,
       healAmount: Hero.maxHp - hero.hp,
-      message: '슈퍼 힐을 시전했습니다. 대상 HP: ${hero.hp}',
+      message: '슈퍼 힐을 시전했습니다.',
     );
   }
 
@@ -41,6 +41,6 @@ class GreatWizard extends Wizard {
 
     hero.increaseHp(healAmount);
     mp -= healCost;
-    print(message);
+    print('$message 대상 HP: ${hero.hp}');
   }
 }
