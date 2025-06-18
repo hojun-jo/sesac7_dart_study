@@ -1,12 +1,14 @@
 @startuml
 
-abstract class Unit implements Mover, Object {
+    abstract class Unit extends Object {
     - int attackPower
     - int mp
     - int moveSpeed
     - int attackSpeed
+
+     - void move()
 }
-abstract class Structure implements Object {
+abstract class Structure extends Object {
     - int productionSpeed
 }
 
@@ -30,8 +32,9 @@ abstract class ProtossMechanic extends Mechanic implements Recoverable {
 }
 
 
-class Marin extends TerranBionic implements Attacker
+class Marine extends TerranBionic implements Attacker
 class Medic extends TerranBionic {
+    - int healPower
     - void heal(Healable target)
 }
 
@@ -62,24 +65,21 @@ class Gateway extends ProtossStructure
 class StarGate extends ProtossStructure
 
 interface Worker {
-    {abstract} - void getFuel()
+    {abstract} - void mining(Fuel resource)
 }
 abstract class Object {
     - int hp
     - int defensePower
-    {abstract} - void attacked(int damage)
+    {abstract} - void attacked(int attackPower)
 }
 interface Attacker {
     {abstract} - void attack(Object target)
 }
 interface Healable {
-    {abstract} - void healed()
+    {abstract} - void healed(int healPower)
 }
 interface Recoverable {
     {abstract} - void recover()
-}
-interface Mover {
-    {abstract} - void move()
 }
 abstract class Fuel {
     + int amount
