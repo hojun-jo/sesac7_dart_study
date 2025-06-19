@@ -15,7 +15,7 @@
 - boolean 리턴, 절대 throw하면 안 됨
 - Reflexive(재귀적): 모든 객체 o에 대해 o == o는 true여야 함
 - Symmetric(대칭): 모든 객체 o1, o2에 대해 o1 == o2, o2 == o1은 모두 true 혹은 모두 false여야 함
-- Transitive(전이): 모든 객체 o1, o2, o3에 대해 o1 == o2가 true이면 o1 == 3도 true여야 함
+- Transitive(전이): 모든 객체 o1, o2, o3에 대해 o1 == o2, o2 == o3가 true이면 o1 == 3도 true여야 함
 
 ### identical()
 - 참조 비교
