@@ -3,8 +3,8 @@ import 'package:modu_3_dart_study/assignments/book2.dart';
 import 'package:test/test.dart';
 
 void main() {
-  const String defaultTitle = 'title';
-  const String defaultComment = 'comment';
+  const String defaultTitle = 'Title';
+  const String defaultComment = 'Comment';
   const String anotherTitle = 'Another Title';
   const String anotherComment = 'Another Comment';
 
@@ -212,7 +212,7 @@ void main() {
       expect(sortedBooks.last.publishDate, earliestYear);
     });
 
-    test('It is an exception compared to non-book2 types.', () {
+    test('It throws exception compared to non-book2 types.', () {
       // given
       final nonBook = 2;
       final book = Book2(
