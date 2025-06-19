@@ -17,7 +17,7 @@ class Book2 implements Comparable {
     return Book2(
       title: title ?? this.title,
       comment: comment ?? this.comment,
-      publishDate: publishDate ?? this.publishDate,
+      publishDate: publishDate ?? this.publishDate.copyWith(),
     );
   }
 
