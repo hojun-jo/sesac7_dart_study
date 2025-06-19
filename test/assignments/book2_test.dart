@@ -178,11 +178,11 @@ void main() {
         final book2 = book1.copyWith(publishDate: anotherPublishDate);
 
         // when
-        final isDefferentObject = book1 != book2;
+        final isDifferentObject = book1 != book2;
         final isDifferentHashCode = book1.hashCode != book2.hashCode;
 
         // then
-        expect(isDefferentObject, isTrue);
+        expect(isDifferentObject, isTrue);
         expect(isDifferentHashCode, isTrue);
       },
     );
