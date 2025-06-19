@@ -30,7 +30,7 @@ class Book2 implements Comparable {
 
   @override
   int compareTo(other) {
-    if (!other is Book2) {
+    if (other is! Book2) {
       throw Exception('Book2와 Book2를 비교해야 합니다.');
     }
 
