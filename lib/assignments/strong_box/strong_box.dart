@@ -9,7 +9,7 @@ class StrongBox<T> {
   StrongBox({required this.key, T? item}) : _item = item;
 
   void put(T item) {
-    this._item = item;
+    _item = item;
   }
 
   T? get() {
