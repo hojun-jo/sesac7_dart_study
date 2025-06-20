@@ -14,7 +14,7 @@ void main() {
         // when
         final strongBox = StrongBox<int>(key: defaultKey);
         for (int i = 0; i < defaultKey.tryLimit; i++) {
-          strongBox.get();
+          expect(strongBox.get(), null);
         }
 
         // then
@@ -30,7 +30,7 @@ void main() {
         // when
         final strongBox = StrongBox<int>(key: defaultKey, item: defaultItem);
         for (int i = 0; i < defaultKey.tryLimit; i++) {
-          strongBox.get();
+          expect(strongBox.get(), null);
         }
 
         // then
@@ -51,7 +51,7 @@ void main() {
         // when
         strongBox.put(anotherItem);
         for (int i = 0; i < defaultKey.tryLimit; i++) {
-          strongBox.get();
+          expect(strongBox.get(), null);
         }
 
         // then
@@ -69,7 +69,7 @@ void main() {
 
         // when
         for (int i = 0; i < defaultKey.tryLimit - 1; i++) {
-          strongBox.get();
+          expect(strongBox.get(), null);
         }
 
         // then
@@ -86,7 +86,7 @@ void main() {
 
         // when
         for (int i = 0; i < defaultKey.tryLimit; i++) {
-          strongBox.get();
+          expect(strongBox.get(), null);
         }
 
         // then
