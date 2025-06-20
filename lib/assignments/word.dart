@@ -1,4 +1,5 @@
 class Word {
+  static const int minIndex = 0;
   static const Set<String> vowels = {'a', 'e', 'i', 'o', 'u'};
   static const Set<String> consonant = {
     'b',
@@ -37,6 +38,9 @@ class Word {
   }
 
   bool _isContainWord({required int index, required Set<String> words}) {
+    if (index < minIndex) {
+      throw Exception('인덱스는 $minIndex보다 큰 값이 필요합니다.');
+    }
     if (index >= _word.length) {
       throw Exception('인덱스는 글자 길이보다 작은 값이 필요합니다.');
     }
