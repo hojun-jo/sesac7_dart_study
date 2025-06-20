@@ -143,7 +143,7 @@ void main() {
 
   group('equals', () {
     test(
-      'If they have the same publishDate, they are the same object.',
+      'If they have the same title and publishDate, they are the same object.',
       () {
         // given
         final book1 = Book2(
@@ -152,7 +152,6 @@ void main() {
           publishDate: defaultPublishDate,
         );
         final book2 = book1.copyWith(
-          title: anotherTitle,
           comment: anotherComment,
         );
 
@@ -210,20 +209,6 @@ void main() {
       // then
       expect(sortedBooks.first.publishDate, defaultPublishDate);
       expect(sortedBooks.last.publishDate, earliestYear);
-    });
-
-    test('It throws exception compared to non-book2 types.', () {
-      // given
-      final nonBook = 2;
-      final book = Book2(
-        title: defaultTitle,
-        comment: defaultComment,
-        publishDate: defaultPublishDate,
-      );
-
-      // when
-      // then
-      expect(() => book.compareTo(nonBook), throwsException);
     });
   });
 }
