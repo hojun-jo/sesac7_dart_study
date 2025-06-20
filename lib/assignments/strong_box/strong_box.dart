@@ -3,14 +3,13 @@ import 'package:modu_3_dart_study/assignments/strong_box/key_type.dart';
 class StrongBox<T> {
   final KeyType key;
 
-  T? item;
-
+  T? _item;
   int _openTryCount = 0;
 
-  StrongBox({required this.key});
+  StrongBox({required this.key, T? item}) : _item = item;
 
   void put(T item) {
-    this.item = item;
+    this._item = item;
   }
 
   T? get() {
@@ -19,6 +18,6 @@ class StrongBox<T> {
       return null;
     }
 
-    return item;
+    return _item;
   }
 }
