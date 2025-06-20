@@ -19,6 +19,7 @@ void main() {
   group('isVowel', () {
     test('The vowelIndex of sampleWord has isVowel true.', () {
       // given
+
       // when
       // then
       expect(word.isVowel(vowelIndex), isTrue);
@@ -26,6 +27,7 @@ void main() {
 
     test('The consonantIndex of sampleWord has isVowel false.', () {
       // given
+
       // when
       // then
       expect(word.isVowel(consonantIndex), isFalse);
@@ -33,7 +35,6 @@ void main() {
 
     test('The minusIndex of sampleWord has isVowel throws exception.', () {
       // given
-      final word = Word(sampleWord);
 
       // when
       // then
@@ -42,7 +43,6 @@ void main() {
 
     test('The outOfIndex of sampleWord has isVowel throws exception.', () {
       // given
-      final word = Word(sampleWord);
 
       // when
       // then
@@ -60,6 +60,7 @@ void main() {
 
     test('The specialCharacterIndex of sampleWord has isVowel false.', () {
       // given
+
       // when
       // then
       expect(word.isVowel(specialCharacterIndex), isFalse);
@@ -69,6 +70,7 @@ void main() {
   group('isConsonant', () {
     test('The vowelIndex of sampleWord has isConsonant false.', () {
       // given
+
       // when
       // then
       expect(word.isConsonant(vowelIndex), isFalse);
@@ -76,6 +78,7 @@ void main() {
 
     test('The consonantIndex of sampleWord has isConsonant true.', () {
       // given
+
       // when
       // then
       expect(word.isConsonant(consonantIndex), isTrue);
@@ -83,8 +86,6 @@ void main() {
 
     test('The minusIndex of sampleWord has isConsonant throws exception.', () {
       // given
-      final word = Word(sampleWord);
-
       // when
       // then
       expect(() => word.isConsonant(minusIndex), throwsException);
@@ -92,7 +93,6 @@ void main() {
 
     test('The outOfIndex of sampleWord has isConsonant throws exception.', () {
       // given
-      final word = Word(sampleWord);
 
       // when
       // then
@@ -110,6 +110,7 @@ void main() {
 
     test('The specialCharacterIndex of sampleWord has isConsonant false.', () {
       // given
+
       // when
       // then
       expect(word.isConsonant(specialCharacterIndex), isFalse);
