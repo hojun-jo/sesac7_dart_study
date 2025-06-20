@@ -1,4 +1,4 @@
-class Book2 implements Comparable {
+class Book2 implements Comparable<Book2> {
   final String title;
   final String comment;
   final DateTime publishDate;
@@ -37,11 +37,7 @@ class Book2 implements Comparable {
   }
 
   @override
-  int compareTo(other) {
-    if (other is! Book2) {
-      throw Exception('Book2와 Book2를 비교해야 합니다.');
-    }
-
+  int compareTo(Book2 other) {
     return -publishDate.compareTo(other.publishDate);
   }
 }
