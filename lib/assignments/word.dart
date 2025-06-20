@@ -6,4 +6,8 @@ class Word {
   bool isVowel(int i) {
     return vowels.contains(word.substring(i, i + 1));
   }
+
+  bool isConsonant(int i) {
+    return !isVowel(i);
+  }
 }
