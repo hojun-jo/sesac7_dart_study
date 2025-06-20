@@ -22,11 +22,19 @@ class Book2 implements Comparable {
   }
 
   @override
-  int get hashCode => publishDate.millisecondsSinceEpoch;
+  int get hashCode =>
+      '$title${publishDate.year}${publishDate.month}${publishDate.day}'
+          .hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is Book2 && hashCode == other.hashCode;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is Book2 &&
+            title == other.title &&
+            publishDate.year == other.publishDate.year &&
+            publishDate.month == other.publishDate.month &&
+            publishDate.day == other.publishDate.day;
+  }
 
   @override
   int compareTo(other) {
