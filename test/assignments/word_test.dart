@@ -8,6 +8,7 @@ void main() {
   const int consonantIndex = 0;
   const int specialCharacterIndex = 6;
   const int outOfIndex = sampleWord.length;
+  const int minusIndex = -1;
 
   late Word word;
 
@@ -28,6 +29,15 @@ void main() {
       // when
       // then
       expect(word.isVowel(consonantIndex), isFalse);
+    });
+
+    test('The minusIndex of sampleWord has isVowel throws exception.', () {
+      // given
+      final word = Word(sampleWord);
+
+      // when
+      // then
+      expect(() => word.isVowel(minusIndex), throwsException);
     });
 
     test('The outOfIndex of sampleWord has isVowel throws exception.', () {
@@ -69,6 +79,15 @@ void main() {
       // when
       // then
       expect(word.isConsonant(consonantIndex), isTrue);
+    });
+
+    test('The minusIndex of sampleWord has isConsonant throws exception.', () {
+      // given
+      final word = Word(sampleWord);
+
+      // when
+      // then
+      expect(() => word.isConsonant(minusIndex), throwsException);
     });
 
     test('The outOfIndex of sampleWord has isConsonant throws exception.', () {
