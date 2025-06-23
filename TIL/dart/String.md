@@ -15,18 +15,19 @@
 void main() {
   var name = 'name';
   var stopwatch = Stopwatch();
-
   stopwatch.start();
   for (var i = 0; i < 100000; i++) { // 십만
     name += 'a';
   }
-  print(stopwatch.elapsed); // 0:00:00.356334
-
-  stopwatch.start();
+  print(stopwatch.elapsed); // 0:00:00.226932
+  stopwatch
+    ..stop()
+    ..reset()
+    ..start();
   for (var i = 0; i < 1000000; i++) { // 백만
     name += 'a';
   }
-  print(stopwatch.elapsed); // 0:02:33.700933
+  print(stopwatch.elapsed); // 0:01:48.084943
 }
 ```
 
