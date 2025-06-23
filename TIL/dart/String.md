@@ -13,21 +13,22 @@
 - String은 인스턴스 생성 연산이 많을 경우 확 느려짐
 ```dart
 void main() {
-  var name = 'name';
+  var name = '';
   var stopwatch = Stopwatch();
   stopwatch.start();
   for (var i = 0; i < 100000; i++) { // 십만
     name += 'a';
   }
-  print(stopwatch.elapsed); // 0:00:00.226932
+  stopwatch.stop();
+  print(stopwatch.elapsed); // 0:00:00.231139
+  name = '';
   stopwatch
-    ..stop()
     ..reset()
     ..start();
   for (var i = 0; i < 1000000; i++) { // 백만
     name += 'a';
   }
-  print(stopwatch.elapsed); // 0:01:48.084943
+  print(stopwatch.elapsed); // 0:01:31.049186
 }
 ```
 
