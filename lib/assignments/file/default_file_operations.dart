@@ -6,8 +6,17 @@ class DefaultFileOperations implements FileOperations {
   @override
   void copy(String sourcePath, String targetPath) {
     final source = File(sourcePath);
-    final contents = source.readAsStringSync();
+    if (!source.existsSync()) {
+      throw FileSystemException('Source file does not exist', sourcePath);
+    }
+
     final target = File(targetPath);
+    final targetDirectory = target.parent;
+    if (!targetDirectory.existsSync()) {
+      targetDirectory.createSync(recursive: true);
+    }
+
+    final contents = source.readAsStringSync();
     target.writeAsStringSync(contents);
   }
 }
