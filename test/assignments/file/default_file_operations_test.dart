@@ -46,6 +46,21 @@ void main() {
     );
 
     test(
+      'Throws an exception if the source file is not exist.',
+      () {
+        // given
+        final invalidSourcePath = 'assets/asdf.txt';
+
+        // when
+        // then
+        expect(
+          () => fileOperations.copy(invalidSourcePath, targetPath),
+          throwsA(isA<FileSystemException>()),
+        );
+      },
+    );
+
+    test(
       'Throws an exception if the targetPath is invalid.',
       () {
         // given
@@ -57,6 +72,23 @@ void main() {
           () => fileOperations.copy(sourcePath, invalidTargetPath),
           throwsException,
         );
+      },
+    );
+
+    test(
+      'directory',
+      () {
+        // given
+        final directoryPath = 'assets/dummy';
+        final filePath = '$directoryPath/dummy.txt';
+
+        // when
+        expect(Directory(directoryPath).existsSync(), isFalse);
+        fileOperations.copy(sourcePath, filePath);
+
+        // then
+        expect(Directory(directoryPath).existsSync(), isTrue);
+        Directory(directoryPath).delete(recursive: true);
       },
     );
   });
