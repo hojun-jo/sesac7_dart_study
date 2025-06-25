@@ -17,7 +17,7 @@ void main() {
   });
 
   group('constructor', () {
-    test('When create an Emplyee, name and age are given values.', () {
+    test('When create an Employee, name and age are given values.', () {
       // given
       // when
 

@@ -26,7 +26,7 @@ void main() {
   });
 
   group('constructor', () {
-    test('When create an Department, name and leader are given values.', () {
+    test('When create a Department, name and leader are given values.', () {
       // given
       // when
 
