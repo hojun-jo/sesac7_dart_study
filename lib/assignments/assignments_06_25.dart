@@ -21,18 +21,26 @@ void main() {
   final employee = Employee(name: '홍길동', age: 41);
   final department = Department(name: '총무부', leader: employee);
 
-  final json = department.toJson();
-  print('json: $json');
-  final jsonString = jsonEncode(json);
-  print('jsonString: $jsonString');
+  try {
+    final json = department.toJson();
+    print('json: $json');
+    final jsonString = jsonEncode(json);
+    print('jsonString: $jsonString');
 
-  final file = File('assets/company.txt');
-  file.writeAsStringSync(jsonString);
-  final readJsonString = file.readAsStringSync();
-  print('readJsonString: $readJsonString');
-  final Map<String, dynamic> readJson = jsonDecode(readJsonString);
-  print('readJson: $readJson');
+    final file = File('assets/company.txt');
+    final assetsDirectory = Directory('assets');
+    if (!assetsDirectory.existsSync()) {
+      assetsDirectory.createSync();
+    }
+    file.writeAsStringSync(jsonString);
+    final readJsonString = file.readAsStringSync();
+    print('readJsonString: $readJsonString');
+    final Map<String, dynamic> readJson = jsonDecode(readJsonString);
+    print('readJson: $readJson');
 
-  final readDepartment = Department.fromJson(readJson);
-  print(readDepartment);
+    final readDepartment = Department.fromJson(readJson);
+    print(readDepartment);
+  } catch (e) {
+    print(e);
+  }
 }
