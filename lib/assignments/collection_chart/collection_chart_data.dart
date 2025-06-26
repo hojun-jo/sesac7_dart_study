@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:modu_3_dart_study/assignments/collection_chart/collection_sale_price.dart';
 
 class CollectionChartData {
@@ -39,7 +40,7 @@ class CollectionChartData {
       identical(this, other) ||
       other is CollectionChartData &&
           collectionName == other.collectionName &&
-          collectionSalePrice == other.collectionSalePrice;
+          ListEquality().equals(collectionSalePrice, other.collectionSalePrice);
 
   @override
   String toString() {
