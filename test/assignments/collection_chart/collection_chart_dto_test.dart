@@ -73,8 +73,7 @@ void main() {
 
       // when
       final collectionChartDTO = CollectionChartDTO.fromJson(json);
-      print(collectionChartDTO.collectionChartDataList);
-      print(expectedCollectionChartDataList);
+
       // then
       expect(
         ListEquality().equals(
