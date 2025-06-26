@@ -25,7 +25,7 @@ class CollectionChartDTO {
   }
 
   @override
-  int get hashCode => collectionChartDataList.hashCode;
+  int get hashCode => collectionChartDataList?.hashCode ?? 0;
 
   @override
   bool operator ==(Object other) =>
@@ -38,6 +38,6 @@ class CollectionChartDTO {
 
   @override
   String toString() {
-    return 'CollectionChartObject{$collectionChartDataListString: $collectionChartDataList}\n';
+    return 'CollectionChartDTO{$collectionChartDataListString: $collectionChartDataList}\n';
   }
 }
