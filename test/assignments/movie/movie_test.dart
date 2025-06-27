@@ -53,7 +53,7 @@ void main() {
       'If title is null in the json, the title of the Movie is unknown.',
       () {
         // given
-        final json = {"director": "George Lucas", "year": 1977};
+        final json = {"director": director, "year": year};
 
         // when
         final movie = Movie.fromJson(json);
@@ -69,7 +69,7 @@ void main() {
       'If director is null in the json, the director of the Movie is unknown.',
       () {
         // given
-        final json = {"title": "Star Ward", "year": 1977};
+        final json = {"title": title, "year": year};
 
         // when
         final movie = Movie.fromJson(json);
@@ -85,7 +85,7 @@ void main() {
       'If year is null in the json, the year of the Movie is 0.',
       () {
         // given
-        final json = {"title": "Star Ward", "director": "George Lucas"};
+        final json = {"title": title, "director": director};
 
         // when
         final movie = Movie.fromJson(json);
@@ -96,6 +96,19 @@ void main() {
         expect(movie.year, Movie.nullYear);
       },
     );
+
+    test('Empty json should use all default values', () {
+      // given
+      final emptyJson = <String, dynamic>{};
+
+      // when
+      final movie = Movie.fromJson(emptyJson);
+
+      // then
+      expect(movie.title, Movie.unknown);
+      expect(movie.director, Movie.unknown);
+      expect(movie.year, Movie.nullYear);
+    });
   });
 
   group('toJson', () {
@@ -112,6 +125,43 @@ void main() {
 
       // then
       expect(jsoned, sampleJson);
+    });
+  });
+
+  group('equality', () {
+    test('Same values should be equal', () {
+      // given
+      final movie1 = Movie(
+        title: title,
+        director: director,
+        year: year,
+      );
+      final movie2 = Movie(
+        title: title,
+        director: director,
+        year: year,
+      );
+
+      // then
+      expect(movie1 == movie2, true);
+      expect(movie1.hashCode == movie2.hashCode, true);
+    });
+
+    test('Different values should not be equal', () {
+      // given
+      final movie1 = Movie(
+        title: title,
+        director: director,
+        year: year,
+      );
+      final movie2 = Movie(
+        title: 'Avatar',
+        director: 'James Cameron',
+        year: 2009,
+      );
+
+      // then
+      expect(movie1 == movie2, false);
     });
   });
 }
