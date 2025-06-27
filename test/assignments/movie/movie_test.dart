@@ -142,6 +142,7 @@ void main() {
         year: year,
       );
 
+      // when
       // then
       expect(movie1 == movie2, true);
       expect(movie1.hashCode == movie2.hashCode, true);
@@ -160,8 +161,22 @@ void main() {
         year: 2009,
       );
 
+      // when
       // then
       expect(movie1 == movie2, false);
+    });
+
+    test('Object should be equal to itself', () {
+      // given
+      final movie = Movie(
+        title: title,
+        director: director,
+        year: year,
+      );
+
+      // when
+      // then
+      expect(movie == movie, true);
     });
   });
 }
