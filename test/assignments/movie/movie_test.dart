@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:modu_3_dart_study/assignments/movie/movie.dart';
 import 'package:test/test.dart';
 
@@ -7,11 +5,11 @@ void main() {
   final title = 'Star Ward';
   final director = 'George Lucas';
   final year = 1977;
-  final jsonString = '''{
-  "title": "Star Ward",
-  "director": "George Lucas",
-  "year": 1977
-  }''';
+  final sampleJson = {
+    "title": "Star Ward",
+    "director": "George Lucas",
+    "year": 1977,
+  };
 
   group(
     'constructor',
@@ -42,7 +40,7 @@ void main() {
       () {
         // given
         // when
-        final movie = Movie.fromJson(jsonDecode(jsonString));
+        final movie = Movie.fromJson(sampleJson);
 
         // then
         expect(movie.title, title);
@@ -55,13 +53,10 @@ void main() {
       'If title is null in the json, the title of the Movie is unknown.',
       () {
         // given
-        final jsonString = '''{
-  "director": "George Lucas",
-  "year": 1977
-  }''';
+        final json = {"director": "George Lucas", "year": 1977};
 
         // when
-        final movie = Movie.fromJson(jsonDecode(jsonString));
+        final movie = Movie.fromJson(json);
 
         // then
         expect(movie.title, Movie.unknown);
@@ -74,13 +69,10 @@ void main() {
       'If director is null in the json, the director of the Movie is unknown.',
       () {
         // given
-        final jsonString = '''{
-  "title": "Star Ward",
-  "year": 1977
-  }''';
+        final json = {"title": "Star Ward", "year": 1977};
 
         // when
-        final movie = Movie.fromJson(jsonDecode(jsonString));
+        final movie = Movie.fromJson(json);
 
         // then
         expect(movie.title, title);
@@ -93,13 +85,10 @@ void main() {
       'If year is null in the json, the year of the Movie is 0.',
       () {
         // given
-        final jsonString = '''{
-  "title": "Star Ward",
-  "director": "George Lucas"
-  }''';
+        final json = {"title": "Star Ward", "director": "George Lucas"};
 
         // when
-        final movie = Movie.fromJson(jsonDecode(jsonString));
+        final movie = Movie.fromJson(json);
 
         // then
         expect(movie.title, title);
@@ -107,5 +96,22 @@ void main() {
         expect(movie.year, Movie.nullYear);
       },
     );
+  });
+
+  group('toJson', () {
+    test('toJson, it will be the same as the value of jsonString.', () {
+      // given
+      final movie = Movie(
+        title: title,
+        director: director,
+        year: year,
+      );
+
+      // when
+      final jsoned = movie.toJson();
+
+      // then
+      expect(jsoned, sampleJson);
+    });
   });
 }
