@@ -9,6 +9,17 @@ void main() {
   final expectedIpoDate = "1999-11-18";
   final expectedDelistingDate = "null";
   final expectedStatus = "Active";
+  final expectedCsv =
+      'A,Agilent Technologies Inc,NYSE,Stock,1999-11-18,null,Active';
+  final stockListing = StockListing(
+    symbol: expectedSymbol,
+    name: expectedName,
+    exchange: expectedExchange,
+    assetType: expectedAssetType,
+    ipoDate: expectedIpoDate,
+    delistingDate: expectedDelistingDate,
+    status: expectedStatus,
+  );
 
   group(
     'constructor',
@@ -18,15 +29,6 @@ void main() {
         () {
           // given
           // when
-          final stockListing = StockListing(
-            symbol: expectedSymbol,
-            name: expectedName,
-            exchange: expectedExchange,
-            assetType: expectedAssetType,
-            ipoDate: expectedIpoDate,
-            delistingDate: expectedDelistingDate,
-            status: expectedStatus,
-          );
 
           // then
           expect(stockListing.symbol, expectedSymbol);
@@ -69,14 +71,12 @@ void main() {
 
   group('fromCsv', () {
     test(
-      'If the json contains all the values and create StockListing.fromJson, the symbol, name, exchange, assetType, ipoDate, delistingDate and status are the given values.',
+      'If the csv contains all the values and create StockListing.fromCsv, the symbol, name, exchange, assetType, ipoDate, delistingDate and status are the given values.',
       () {
         // given
-        final csv =
-            'A,Agilent Technologies Inc,NYSE,Stock,1999-11-18,null,Active';
 
         // when
-        final stockListing = StockListing.fromCsv(csv);
+        final stockListing = StockListing.fromCsv(expectedCsv);
 
         // then
         expect(stockListing.symbol, expectedSymbol);
@@ -90,7 +90,7 @@ void main() {
     );
 
     test(
-      'If all values in the json are null and create StockListing.fromJson, the symbol, name, exchange, assetType, ipoDate, delistingDate and status are the given values.',
+      'If all values in the csv are null and create StockListing.fromCsv, the symbol, name, exchange, assetType, ipoDate, delistingDate and status are the given values.',
       () {
         // given
         final csv = '';
@@ -115,17 +115,6 @@ void main() {
       'If stockListing has all values, the result of toCsv is the same as expectedCsv.',
       () {
         // given
-        final stockListing = StockListing(
-          symbol: expectedSymbol,
-          name: expectedName,
-          exchange: expectedExchange,
-          assetType: expectedAssetType,
-          ipoDate: expectedIpoDate,
-          delistingDate: expectedDelistingDate,
-          status: expectedStatus,
-        );
-        final expectedCsv =
-            'A,Agilent Technologies Inc,NYSE,Stock,1999-11-18,null,Active';
 
         // when
         final result = stockListing.toCsv();
@@ -141,15 +130,6 @@ void main() {
       'If stockListing contains all values and copyWith is performed, the copied stockListing is a different object and has the same values.',
       () {
         // given
-        final stockListing = StockListing(
-          symbol: expectedSymbol,
-          name: expectedName,
-          exchange: expectedExchange,
-          assetType: expectedAssetType,
-          ipoDate: expectedIpoDate,
-          delistingDate: expectedDelistingDate,
-          status: expectedStatus,
-        );
 
         // when
         final copied = stockListing.copyWith();
@@ -164,15 +144,6 @@ void main() {
       'If stockListing contains all the values and you do a copyWith with a new symbol, the copied stockListing will have a different symbol.',
       () {
         // given
-        final stockListing = StockListing(
-          symbol: expectedSymbol,
-          name: expectedName,
-          exchange: expectedExchange,
-          assetType: expectedAssetType,
-          ipoDate: expectedIpoDate,
-          delistingDate: expectedDelistingDate,
-          status: expectedStatus,
-        );
         final newSymbol = 'B';
 
         // when

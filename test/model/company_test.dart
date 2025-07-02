@@ -5,6 +5,16 @@ void main() {
   final expectedName = "Romaguera-Crona";
   final expectedCatchPhrase = "Multi-layered client-server neural-net";
   final expectedBs = "harness real-time e-markets";
+  final expectedJson = {
+    "name": "Romaguera-Crona",
+    "catchPhrase": "Multi-layered client-server neural-net",
+    "bs": "harness real-time e-markets",
+  };
+  final company = Company(
+    name: expectedName,
+    catchPhrase: expectedCatchPhrase,
+    bs: expectedBs,
+  );
 
   group(
     'constructor',
@@ -14,11 +24,6 @@ void main() {
         () {
           // given
           // when
-          final company = Company(
-            name: expectedName,
-            catchPhrase: expectedCatchPhrase,
-            bs: expectedBs,
-          );
 
           // then
           expect(company.name, expectedName);
@@ -52,14 +57,9 @@ void main() {
       'If the json contains all the values and create Company.fromJson, the name, catchPhrase and bs are the given values.',
       () {
         // given
-        final json = {
-          "name": "Romaguera-Crona",
-          "catchPhrase": "Multi-layered client-server neural-net",
-          "bs": "harness real-time e-markets",
-        };
 
         // when
-        final company = Company.fromJson(json);
+        final company = Company.fromJson(expectedJson);
 
         // then
         expect(company.name, expectedName);
@@ -94,16 +94,6 @@ void main() {
       'If company has all values, the result of toJson is the same as expectedJson.',
       () {
         // given
-        final company = Company(
-          name: expectedName,
-          catchPhrase: expectedCatchPhrase,
-          bs: expectedBs,
-        );
-        final expectedJson = {
-          "name": "Romaguera-Crona",
-          "catchPhrase": "Multi-layered client-server neural-net",
-          "bs": "harness real-time e-markets",
-        };
 
         // when
         final result = company.toJson();
@@ -116,14 +106,9 @@ void main() {
 
   group('copyWith', () {
     test(
-      'If company contains all values and copyWith is performed, the copied todo is a different object and has the same values.',
+      'If company contains all values and copyWith is performed, the copied company is a different object and has the same values.',
       () {
         // given
-        final company = Company(
-          name: expectedName,
-          catchPhrase: expectedCatchPhrase,
-          bs: expectedBs,
-        );
 
         // when
         final copied = company.copyWith();
@@ -135,14 +120,9 @@ void main() {
     );
 
     test(
-      'If company contains all the values and you do a copyWith with a new name, the copied todo will have a different name.',
+      'If company contains all the values and you do a copyWith with a new name, the copied company will have a different name.',
       () {
         // given
-        final company = Company(
-          name: expectedName,
-          catchPhrase: expectedCatchPhrase,
-          bs: expectedBs,
-        );
         final newName = 'new name';
 
         // when

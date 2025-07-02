@@ -4,6 +4,8 @@ import 'package:test/test.dart';
 void main() {
   final expectedLat = "-37.3159";
   final expectedLng = "81.1496";
+  final expectedJson = {"lat": "-37.3159", "lng": "81.1496"};
+  final geo = Geo(lat: expectedLat, lng: expectedLng);
 
   group(
     'constructor',
@@ -13,7 +15,6 @@ void main() {
         () {
           // given
           // when
-          final geo = Geo(lat: expectedLat, lng: expectedLng);
 
           // then
           expect(geo.lat, expectedLat);
@@ -41,14 +42,13 @@ void main() {
       'If the json contains all the values and create Geo.fromJson, the lat, lng are the given values.',
       () {
         // given
-        final json = {"lat": "-37.3159", "lng": "81.1496"};
 
         // when
-        final geo = Geo.fromJson(json);
+        final geo = Geo.fromJson(expectedJson);
 
         // then
-        expect(geo.lat, json['lat']);
-        expect(geo.lng, json['lng']);
+        expect(geo.lat, expectedJson['lat']);
+        expect(geo.lng, expectedJson['lng']);
       },
     );
 
@@ -70,11 +70,9 @@ void main() {
 
   group('toJson', () {
     test(
-      'If todo has all values, the result of toJson is the same as expectedJson.',
+      'If geo has all values, the result of toJson is the same as expectedJson.',
       () {
         // given
-        final geo = Geo(lat: expectedLat, lng: expectedLng);
-        final expectedJson = {"lat": "-37.3159", "lng": "81.1496"};
 
         // when
         final result = geo.toJson();
@@ -87,10 +85,9 @@ void main() {
 
   group('copyWith', () {
     test(
-      'If geo contains all values and copyWith is performed, the copied todo is a different object and has the same values.',
+      'If geo contains all values and copyWith is performed, the copied geo is a different object and has the same values.',
       () {
         // given
-        final geo = Geo(lat: expectedLat, lng: expectedLng);
 
         // when
         final copied = geo.copyWith();
@@ -102,10 +99,9 @@ void main() {
     );
 
     test(
-      'If geo contains all the values and you do a copyWith with a new lat, the copied todo will have a different lat.',
+      'If geo contains all the values and you do a copyWith with a new lat, the copied geo will have a different lat.',
       () {
         // given
-        final geo = Geo(lat: expectedLat, lng: expectedLng);
         final newLat = '-30';
 
         // when

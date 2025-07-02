@@ -2,6 +2,13 @@ import 'package:modu_3_dart_study/data_source/todo_data_source_impl.dart';
 import 'package:test/test.dart';
 
 void main() {
+  final expectedJson = {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false,
+  };
+
   group(
     'getTodo',
     () {
@@ -9,12 +16,6 @@ void main() {
         'If the json file is healthy, when you perform getTodo, all values will be equal to the values in the expectedJson.',
         () async {
           // given
-          final expectedJson = {
-            "userId": 1,
-            "id": 1,
-            "title": "delectus aut autem",
-            "completed": false,
-          };
 
           // when
           final todo = await TodoDataSourceImpl().getTodo();
@@ -36,12 +37,6 @@ void main() {
         'If the json file is healthy, the first value of getTodos will be the same as the expectedJson value.',
         () async {
           // given
-          final expectedJson = {
-            "userId": 1,
-            "id": 1,
-            "title": "delectus aut autem",
-            "completed": false,
-          };
 
           // when
           final todos = await TodoDataSourceImpl().getTodos();

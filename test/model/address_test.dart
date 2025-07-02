@@ -8,6 +8,20 @@ void main() {
   final expectedCity = "Gwenborough";
   final expectedZipcode = "92998-3874";
   final expectedGeo = Geo(lat: "-37.3159", lng: "81.1496");
+  final expectedJson = {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {"lat": "-37.3159", "lng": "81.1496"},
+  };
+  final address = Address(
+    street: expectedStreet,
+    suite: expectedSuite,
+    city: expectedCity,
+    zipcode: expectedZipcode,
+    geo: expectedGeo,
+  );
 
   group(
     'constructor',
@@ -17,13 +31,6 @@ void main() {
         () {
           // given
           // when
-          final address = Address(
-            street: expectedStreet,
-            suite: expectedSuite,
-            city: expectedCity,
-            zipcode: expectedZipcode,
-            geo: expectedGeo,
-          );
 
           // then
           expect(address.street, expectedStreet);
@@ -63,16 +70,9 @@ void main() {
       'If the json contains all the values and create Address.fromJson, the street, suite, city, zipcode and geo are the given values.',
       () {
         // given
-        final json = {
-          "street": "Kulas Light",
-          "suite": "Apt. 556",
-          "city": "Gwenborough",
-          "zipcode": "92998-3874",
-          "geo": {"lat": "-37.3159", "lng": "81.1496"},
-        };
 
         // when
-        final address = Address.fromJson(json);
+        final address = Address.fromJson(expectedJson);
 
         // then
         expect(address.street, expectedStreet);
@@ -107,20 +107,6 @@ void main() {
       'If address has all values, the result of toJson is the same as expectedJson.',
       () {
         // given
-        final address = Address(
-          street: expectedStreet,
-          suite: expectedSuite,
-          city: expectedCity,
-          zipcode: expectedZipcode,
-          geo: expectedGeo,
-        );
-        final expectedJson = {
-          "street": "Kulas Light",
-          "suite": "Apt. 556",
-          "city": "Gwenborough",
-          "zipcode": "92998-3874",
-          "geo": {"lat": "-37.3159", "lng": "81.1496"},
-        };
 
         // when
         final result = address.toJson();
@@ -136,13 +122,6 @@ void main() {
       'If address contains all values and copyWith is performed, the copied address is a different object and has the same values.',
       () {
         // given
-        final address = Address(
-          street: expectedStreet,
-          suite: expectedSuite,
-          city: expectedCity,
-          zipcode: expectedZipcode,
-          geo: expectedGeo,
-        );
 
         // when
         final copied = address.copyWith();
@@ -157,13 +136,6 @@ void main() {
       'If address contains all the values and you do a copyWith with a new street, the copied address will have a different street.',
       () {
         // given
-        final address = Address(
-          street: expectedStreet,
-          suite: expectedSuite,
-          city: expectedCity,
-          zipcode: expectedZipcode,
-          geo: expectedGeo,
-        );
         final newStreet = 'Victor Plains';
 
         // when

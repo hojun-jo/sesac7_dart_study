@@ -6,6 +6,12 @@ void main() {
   final expectedId = 1;
   final expectedTitle = 'delectus aut autem';
   final expectedCompleted = false;
+  final expectedJson = {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false,
+  };
 
   group(
     'constructor',
@@ -57,15 +63,9 @@ void main() {
       'If the json contains all the values and create Todo.fromJson, userId, id, title, completed are the given values.',
       () {
         // given
-        final json = {
-          "userId": 1,
-          "id": 1,
-          "title": "delectus aut autem",
-          "completed": false,
-        };
 
         // when
-        final todo = Todo.fromJson(json);
+        final todo = Todo.fromJson(expectedJson);
 
         // then
         expect(todo.userId, expectedUserId);
@@ -109,12 +109,6 @@ void main() {
           title: expectedTitle,
           completed: expectedCompleted,
         );
-        final expectedJson = {
-          "userId": 1,
-          "id": 1,
-          "title": "delectus aut autem",
-          "completed": false,
-        };
 
         // when
         final result = todo.toJson();
