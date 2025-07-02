@@ -47,7 +47,7 @@ class Address {
       suite: suite ?? this.suite,
       city: city ?? this.city,
       zipcode: zipcode ?? this.zipcode,
-      geo: geo ?? this.geo?.copyWith(),
+      geo: geo ?? this.geo,
     );
   }
 
