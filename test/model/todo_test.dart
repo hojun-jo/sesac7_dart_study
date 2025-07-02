@@ -98,6 +98,33 @@ void main() {
     );
   });
 
+  group('toJson', () {
+    test(
+      'If todo has all values, the result of toJson is the same as expectedJson.',
+      () {
+        // given
+        final todo = Todo(
+          userId: expectedUserId,
+          id: expectedId,
+          title: expectedTitle,
+          completed: expectedCompleted,
+        );
+        final expectedJson = {
+          "userId": 1,
+          "id": 1,
+          "title": "delectus aut autem",
+          "completed": false,
+        };
+
+        // when
+        final result = todo.toJson();
+
+        // then
+        expect(result, expectedJson);
+      },
+    );
+  });
+
   group('copyWith', () {
     test(
       'If todo contains all values and copyWith is performed, the copied todo is a different object and has the same values.',
