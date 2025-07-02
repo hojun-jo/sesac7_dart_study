@@ -56,7 +56,7 @@ void main() {
       'If all values in the json are null and create Geo.fromJson, the lat, lng are the given values.',
       () {
         // given
-        final json = {"lat": null, "lng": null};
+        final json = <String, dynamic>{};
 
         // when
         final geo = Geo.fromJson(json);

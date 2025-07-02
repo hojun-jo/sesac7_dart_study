@@ -79,12 +79,7 @@ void main() {
       'If all values in the json are null and create Todo.fromJson, the userId, id, title, and completed are the given values.',
       () {
         // given
-        final json = {
-          "userId": null,
-          "id": null,
-          "title": null,
-          "completed": null,
-        };
+        final json = <String, dynamic>{};
 
         // when
         final todo = Todo.fromJson(json);

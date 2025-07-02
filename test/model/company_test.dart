@@ -72,11 +72,7 @@ void main() {
       'If all values in the json are null and create Company.fromJson, the name, catchPhrase and bs are the given values.',
       () {
         // given
-        final json = {
-          "name": null,
-          "catchPhrase": null,
-          "bs": null,
-        };
+        final json = <String, dynamic>{};
 
         // when
         final company = Company.fromJson(json);
