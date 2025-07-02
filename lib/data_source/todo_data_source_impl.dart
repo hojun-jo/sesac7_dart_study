@@ -12,4 +12,12 @@ class TodoDataSourceImpl implements TodoDataSource {
     final json = jsonDecode(jsonString);
     return Todo.fromJson(json);
   }
+
+  @override
+  Future<List<Todo>> getTodos() async {
+    final file = File('assets/todos.json');
+    final jsonString = await file.readAsString();
+    final json = jsonDecode(jsonString);
+    return (json as List).map((e) => Todo.fromJson(e)).toList();
+  }
 }
