@@ -20,6 +20,15 @@ class Todo {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'userId': userId,
+      'id': id,
+      'title': title,
+      'completed': completed,
+    };
+  }
+
   Todo copyWith({
     num? userId,
     num? id,
