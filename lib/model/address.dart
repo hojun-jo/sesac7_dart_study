@@ -8,11 +8,11 @@ class Address {
   final Geo? geo;
 
   Address({
-    required this.street,
-    required this.suite,
-    required this.city,
-    required this.zipcode,
-    required this.geo,
+    this.street,
+    this.suite,
+    this.city,
+    this.zipcode,
+    this.geo,
   });
 
   factory Address.fromJson(Map<String, dynamic> json) {

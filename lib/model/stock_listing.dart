@@ -10,13 +10,13 @@ class StockListing {
   final String? status;
 
   StockListing({
-    required this.symbol,
-    required this.name,
-    required this.exchange,
-    required this.assetType,
-    required this.ipoDate,
-    required this.delistingDate,
-    required this.status,
+    this.symbol,
+    this.name,
+    this.exchange,
+    this.assetType,
+    this.ipoDate,
+    this.delistingDate,
+    this.status,
   });
 
   factory StockListing.fromCsv(String csvRow) {

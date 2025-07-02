@@ -4,9 +4,9 @@ class Company {
   final String? bs;
 
   Company({
-    required this.name,
-    required this.catchPhrase,
-    required this.bs,
+    this.name,
+    this.catchPhrase,
+    this.bs,
   });
 
   factory Company.fromJson(Map<String, dynamic> json) {

@@ -3,8 +3,8 @@ class Geo {
   final String? lng;
 
   Geo({
-    required this.lat,
-    required this.lng,
+    this.lat,
+    this.lng,
   });
 
   factory Geo.fromJson(Map<String, dynamic> json) {

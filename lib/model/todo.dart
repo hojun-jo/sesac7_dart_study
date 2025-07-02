@@ -5,10 +5,10 @@ class Todo {
   final bool? completed;
 
   Todo({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.completed,
+    this.userId,
+    this.id,
+    this.title,
+    this.completed,
   });
 
   factory Todo.fromJson(Map<String, dynamic> json) {
