@@ -28,4 +28,32 @@ void main() {
       );
     },
   );
+
+  group(
+    'getTodos',
+    () {
+      test(
+        'If the json file is healthy, the first value of getTodos will be the same as the expectedJson value.',
+        () async {
+          // given
+          final expectedJson = {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false,
+          };
+
+          // when
+          final todos = await TodoDataSourceImpl().getTodos();
+          final first = todos.first;
+
+          // then
+          expect(first.userId, expectedJson['userId']);
+          expect(first.id, expectedJson['id']);
+          expect(first.title, expectedJson['title']);
+          expect(first.completed, expectedJson['completed']);
+        },
+      );
+    },
+  );
 }
