@@ -18,7 +18,7 @@ class MockTodoDataSourceImpl implements TodoDataSource {
   @override
   Future<Todo> getTodo() async {
     if (isException != null && isException!) {
-      throw Exception('Fail to get photos');
+      throw Exception('Fail to get todos');
     }
 
     return Todo.fromJson(jsons[0]);
