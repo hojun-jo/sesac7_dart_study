@@ -13,7 +13,7 @@ void main() {
 
   group('getAlbums', () {
     test(
-      'getPhotos returns 2 result.',
+      'getAlbums returns 2 result.',
       () async {
         // given
         final expectedLength = 2;
@@ -36,12 +36,12 @@ void main() {
 
         // when
         final result = await repository.getAlbums();
-        final photo = result.first;
+        final album = result.first;
 
         // then
-        expect(photo.userId, expectedUserId);
-        expect(photo.id, expectedId);
-        expect(photo.title, expectedTitle);
+        expect(album.userId, expectedUserId);
+        expect(album.id, expectedId);
+        expect(album.title, expectedTitle);
       },
     );
 
