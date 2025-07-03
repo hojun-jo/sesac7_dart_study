@@ -12,10 +12,10 @@ class AlbumRepositoryImpl implements AlbumRepository {
   Future<List<Album>> getAlbums({int? limit}) async {
     try {
       final jsons = await _dataSource.getAlbums();
-      return jsons
-          .map(Album.fromJson)
-          .toList()
-          .sublist(0, limit ?? jsons.length);
+      final albums = jsons.map(Album.fromJson).toList();
+      return limit != null && limit < albums.length
+          ? albums.sublist(0, limit)
+          : albums;
     } catch (e) {
       return [];
     }
