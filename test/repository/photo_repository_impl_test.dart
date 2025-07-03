@@ -71,5 +71,21 @@ void main() {
         expect(result, expectedResult);
       },
     );
+
+    test(
+      'All data has the same albumId.',
+      () async {
+        // given
+        final expectedAlbumId = 1;
+
+        // when
+        final result = await repository.getPhotos(expectedAlbumId);
+
+        // then
+        for (var photo in result) {
+          expect(photo.albumId, expectedAlbumId);
+        }
+      },
+    );
   });
 }
