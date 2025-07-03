@@ -24,15 +24,12 @@ class UserRepositoryImpl implements UserRepository {
   Future<List<User>> getUsersTop10ByUserName() async {
     try {
       final users = await _dataSource.getUsers();
-      final sublistEnd = _calculateSublistEnd(users.length);
       return users
           .where((e) => e.username != null)
           .sortedBy<String>((e) => e.username!)
-          .sublist(0, sublistEnd);
+          .sublist(0, min(10, users.length));
     } catch (e) {
       return [];
     }
   }
-
-  int _calculateSublistEnd(int length) => min(10, length);
 }
