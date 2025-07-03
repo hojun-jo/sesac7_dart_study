@@ -1,3 +1,3 @@
 abstract interface class AlbumDataSource {
-  Future<Map<String, dynamic>> getAlbums();
+  Future<List<Map<String, dynamic>>> getAlbums();
 }
