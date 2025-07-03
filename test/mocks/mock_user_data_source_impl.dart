@@ -51,7 +51,7 @@ class MockUserDataSourceImpl implements UserDataSource {
   @override
   Future<List<User>> getUsers() async {
     if (isException != null && isException!) {
-      throw Exception('Fail to get photos');
+      throw Exception('Fail to get users');
     }
 
     return jsons.map(User.fromJson).toList();
