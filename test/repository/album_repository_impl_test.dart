@@ -64,5 +64,47 @@ void main() {
         expect(result, expectedResult);
       },
     );
+
+    test(
+      'If limit is 0, the list contains 0 value.',
+      () async {
+        // given
+        final expectedLength = 0;
+
+        // when
+        final result = await repository.getAlbums(limit: 0);
+
+        // then
+        expect(result.length, expectedLength);
+      },
+    );
+
+    test(
+      'If limit is 1, the list contains 1 value.',
+      () async {
+        // given
+        final expectedLength = 1;
+
+        // when
+        final result = await repository.getAlbums(limit: 1);
+
+        // then
+        expect(result.length, expectedLength);
+      },
+    );
+
+    test(
+      'If limit is 3 when the total data is 2, the list contains 2 values.',
+      () async {
+        // given
+        final expectedLength = 2;
+
+        // when
+        final result = await repository.getAlbums(limit: 3);
+
+        // then
+        expect(result.length, expectedLength);
+      },
+    );
   });
 }
