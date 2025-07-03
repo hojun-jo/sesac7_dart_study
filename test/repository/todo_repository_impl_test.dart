@@ -60,6 +60,18 @@ void main() {
           expect(result, expectedResult);
         },
       );
+
+      test('completed is true for all data.', () async {
+        // given
+
+        // when
+        final result = await repository.getCompletedTodos();
+
+        // then
+        for (var todo in result) {
+          expect(todo.completed, isTrue);
+        }
+      });
     },
   );
 
