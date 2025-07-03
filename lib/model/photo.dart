@@ -21,4 +21,34 @@ class Photo {
   factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
 
   Map<String, dynamic> toJson() => _$PhotoToJson(this);
+
+  Photo copyWith({
+    int? albumId,
+    int? id,
+    String? title,
+    String? url,
+    String? thumbnailUrl,
+  }) {
+    return Photo(
+      albumId: albumId ?? this.albumId,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      url: url ?? this.url,
+      thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    );
+  }
+
+  @override
+  int get hashCode => Object.hash(albumId, id, title, url, thumbnailUrl);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is Photo &&
+            albumId == other.albumId &&
+            id == other.id &&
+            title == other.title &&
+            url == other.url &&
+            thumbnailUrl == other.thumbnailUrl;
+  }
 }
