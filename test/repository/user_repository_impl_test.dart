@@ -153,6 +153,26 @@ void main() {
           expect(result, expectedResult);
         },
       );
+
+      test(
+        'The list returned by getUsersTop10ByUserName has 10 values when the total data is 11.',
+        () async {
+          // given
+          final expectedLength = 10;
+          final UserDataSource dataSource = MockUserDataSourceImpl(
+            isOver10Data: true,
+          );
+          final UserRepository repository = UserRepositoryImpl(
+            dataSource: dataSource,
+          );
+
+          // when
+          final result = await repository.getUsersTop10ByUserName();
+
+          // then
+          expect(result.length, expectedLength);
+        },
+      );
     },
   );
 }
