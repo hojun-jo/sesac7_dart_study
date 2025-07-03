@@ -170,5 +170,5 @@ fabric.properties
 .idea/
 
 
-.DS_Store
-.g.dart
+*.DS_Store
+*.g.dart
