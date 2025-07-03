@@ -45,13 +45,33 @@ class MockUserDataSourceImpl implements UserDataSource {
     },
   ];
   final bool? isException;
+  final bool? isOver10Data;
 
-  MockUserDataSourceImpl({this.isException});
+  MockUserDataSourceImpl({
+    this.isException,
+    this.isOver10Data,
+  });
 
   @override
   Future<List<User>> getUsers() async {
     if (isException != null && isException!) {
       throw Exception('Fail to get users');
+    }
+
+    if (isOver10Data != null && isOver10Data!) {
+      return [
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+        User(username: 'aaa'),
+      ];
     }
 
     return jsons.map(User.fromJson).toList();
