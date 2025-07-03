@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:modu_3_dart_study/data_source/user_data_source.dart';
 import 'package:modu_3_dart_study/model/user.dart';
@@ -32,13 +34,5 @@ class UserRepositoryImpl implements UserRepository {
     }
   }
 
-  int _calculateSublistEnd(int length) {
-    int sublistEnd = 10;
-
-    if (length < sublistEnd) {
-      sublistEnd = length;
-    }
-
-    return sublistEnd;
-  }
+  int _calculateSublistEnd(int length) => min(10, length);
 }
