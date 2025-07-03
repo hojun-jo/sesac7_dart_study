@@ -72,6 +72,22 @@ void main() {
           expect(result, expectedResult);
         },
       );
+
+      test(
+        'All data has the same postId.',
+        () async {
+          // given
+          final expectedPostId = 1;
+
+          // when
+          final result = await repository.getComments(expectedPostId);
+
+          // then
+          for (var comment in result) {
+            expect(comment.postId, expectedPostId);
+          }
+        },
+      );
     },
   );
 }
