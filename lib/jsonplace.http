@@ -1,7 +1,7 @@
-## 읽기 성공
+### 읽기 성공
 GET https://jsonplaceholder.typicode.com/posts/1
 
-## 읽기 실패
+### 읽기 실패
 GET https://jsonplaceholder.typicode.com/posts/101
 
 ### 쓰기
