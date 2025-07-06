@@ -65,7 +65,7 @@ class PostDataSourceImpl implements PostDataSource {
   @override
   Future<Response<String>> patchPost(int id, String post) async {
     final response = await _client.patch(
-      Uri.parse('$baseUrl/$postsPath'),
+      Uri.parse('$baseUrl/$postsPath/$id'),
       headers: {contentTypeKey: contentTypeValue},
       body: post,
     );
@@ -79,7 +79,7 @@ class PostDataSourceImpl implements PostDataSource {
   @override
   Future<Response<String>> updatePost(int id, String post) async {
     final response = await _client.put(
-      Uri.parse('$baseUrl/$postsPath'),
+      Uri.parse('$baseUrl/$postsPath/$id'),
       headers: {contentTypeKey: contentTypeValue},
       body: post,
     );
