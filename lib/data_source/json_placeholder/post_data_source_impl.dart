@@ -5,7 +5,7 @@ import 'package:modu_3_dart_study/core/response.dart';
 class PostDataSourceImpl implements PostDataSource {
   static const baseUrl = 'http://jsonplaceholder.typicode.com';
   static const postsPath = 'posts';
-  static const contentTypeKey = 'Content - Type';
+  static const contentTypeKey = 'Content-Type; charset=utf-8';
   static const contentTypeValue = 'application/json';
 
   final http.Client _client;
