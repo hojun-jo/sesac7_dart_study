@@ -1,5 +1,5 @@
 class Photo2Dto {
-  int? id;
+  dynamic id;
   String? type;
   String? title;
   String? content;
@@ -18,7 +18,7 @@ class Photo2Dto {
   });
 
   factory Photo2Dto.fromJson(Map<String, dynamic> json) => Photo2Dto(
-    id: json['id'] as int?,
+    id: json['id'],
     type: json['type'] as String?,
     title: json['title'] as String?,
     content: json['content'] as String?,

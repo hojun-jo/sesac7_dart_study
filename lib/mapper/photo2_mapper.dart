@@ -6,7 +6,7 @@ import 'package:modu_3_dart_study/model/photo2/photo2_type.dart';
 extension Photo2DtoToModel on Photo2Dto {
   Photo2 toModel() {
     return Photo2(
-      id: id ?? 0,
+      id: _dynamicToId(id),
       type: _stringToType(type),
       title: title ?? '',
       content: content ?? '',
@@ -14,6 +14,14 @@ extension Photo2DtoToModel on Photo2Dto {
       caption: caption ?? '',
       createdAt: _stringToDateTime(createdAt),
     );
+  }
+
+  int _dynamicToId(dynamic value) {
+    if (value is num) {
+      return value.toInt();
+    }
+
+    return 0;
   }
 
   Photo2Type _stringToType(String? value) {
