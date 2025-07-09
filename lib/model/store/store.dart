@@ -5,6 +5,8 @@ part "store.freezed.dart";
 
 @freezed
 class Store with _$Store {
+  static final unknownDate = DateTime(0);
+
   @override
   final String address;
   @override
