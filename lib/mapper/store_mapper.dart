@@ -25,7 +25,7 @@ extension StoreDtoToModelMapper on StoreDto {
       return Store.unknownDate;
     }
 
-    return DateTime.parse(value);
+    return DateTime.parse(value.replaceAll('/', '-'));
   }
 
   StoreRemainStatus _statusFromString(String value) {
