@@ -63,11 +63,14 @@ class MockStoreDataSourceImpl implements StoreDataSource {
       },
     ],
   };
+  final int statusCode;
+
+  MockStoreDataSourceImpl({int? statusCode}) : statusCode = statusCode ?? 200;
 
   @override
   Future<Response<StoreListDto>> getStores() async {
     return Response(
-      statusCode: 200,
+      statusCode: statusCode,
       headers: {},
       body: StoreListDto.fromJson(_json),
     );
