@@ -3,6 +3,8 @@ class Photo2Dto {
   String? type;
   String? title;
   String? content;
+  String? url;
+  String? caption;
   String? createdAt;
 
   Photo2Dto({
@@ -10,6 +12,8 @@ class Photo2Dto {
     this.type,
     this.title,
     this.content,
+    this.url,
+    this.caption,
     this.createdAt,
   });
 
@@ -18,6 +22,8 @@ class Photo2Dto {
     type: json['type'] as String?,
     title: json['title'] as String?,
     content: json['content'] as String?,
+    url: json['url'] as String?,
+    caption: json['caption'] as String?,
     createdAt: json['created_at'] as String?,
   );
 
@@ -26,6 +32,8 @@ class Photo2Dto {
     'type': type,
     'title': title,
     'content': content,
+    'url': url,
+    'caption': caption,
     'created_at': createdAt,
   };
 }
