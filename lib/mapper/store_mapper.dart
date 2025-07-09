@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:modu_3_dart_study/dto/store_list_dto/store_dto.dart';
+import 'package:modu_3_dart_study/dto/store/store_dto.dart';
 import 'package:modu_3_dart_study/model/store/store.dart';
 import 'package:modu_3_dart_study/model/store/store_remain_status.dart';
 
