@@ -22,7 +22,7 @@ extension StoreDtoToModelMapper on StoreDto {
 
   DateTime _stringToDateTime(String? value) {
     if (value == null || value == '') {
-      return DateTime(0);
+      return Store.unknownDate;
     }
 
     return DateTime.parse(value);
