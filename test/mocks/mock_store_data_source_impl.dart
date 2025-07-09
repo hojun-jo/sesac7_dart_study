@@ -64,11 +64,18 @@ class MockStoreDataSourceImpl implements StoreDataSource {
     ],
   };
   final int statusCode;
+  final bool isException;
 
-  MockStoreDataSourceImpl({int? statusCode}) : statusCode = statusCode ?? 200;
+  MockStoreDataSourceImpl({int? statusCode, bool? isException})
+    : statusCode = statusCode ?? 200,
+      isException = isException ?? false;
 
   @override
   Future<Response<StoreListDto>> getStores() async {
+    if (isException) {
+      throw Exception('something wrong');
+    }
+
     return Response(
       statusCode: statusCode,
       headers: {},
