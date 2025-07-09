@@ -23,7 +23,15 @@ extension StoreDtoToModelMapper on StoreDto {
       return Store.unknownDate;
     }
 
-    return DateTime.parse(value.replaceAll('/', '-'));
+    try {
+      return DateFormat('yyyy/MM/dd HH:mm:ss').parse(value);
+    } catch (e) {
+      try {
+        return DateTime.parse(value.replaceAll('/', '-'));
+      } catch (e) {
+        return Store.unknownDate;
+      }
+    }
   }
 
   StoreRemainStatus _statusFromString(String? value) {
@@ -54,6 +62,10 @@ extension StoreModelToDtoMapper on Store {
   }
 
   String _formatDate(DateTime value) {
+    if (value == Store.unknownDate) {
+      return '';
+    }
+
     return DateFormat('yyyy/MM/dd HH:mm:ss').format(value);
   }
 }

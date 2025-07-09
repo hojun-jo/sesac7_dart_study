@@ -38,7 +38,11 @@ extension Photo2DtoToModel on Photo2Dto {
       return Photo2.unknownDate;
     }
 
-    return DateTime.parse(value);
+    try {
+      return DateTime.parse(value);
+    } catch (e) {
+      return Photo2.unknownDate;
+    }
   }
 }
 
@@ -56,6 +60,10 @@ extension Photo2ModelToDto on Photo2 {
   }
 
   String _formatDate(DateTime value) {
+    if (value == Photo2.unknownDate) {
+      return '';
+    }
+
     return DateFormat('yyyy-MM-dd').format(value);
   }
 }
