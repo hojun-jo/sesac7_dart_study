@@ -24,7 +24,7 @@ extension StoreDtoToModelMapper on StoreDto {
     }
 
     try {
-      return DateFormat('yyyy/MM/dd HH:mm:ss').parse(value);
+      return DateFormat(Store.dateFormat).parse(value);
     } catch (e) {
       try {
         return DateTime.parse(value.replaceAll('/', '-'));
@@ -66,6 +66,6 @@ extension StoreModelToDtoMapper on Store {
       return '';
     }
 
-    return DateFormat('yyyy/MM/dd HH:mm:ss').format(value);
+    return DateFormat(Store.dateFormat).format(value);
   }
 }

@@ -6,6 +6,7 @@ part "store.freezed.dart";
 @freezed
 abstract class Store with _$Store {
   static final unknownDate = DateTime(0);
+  static const dateFormat = 'yyyy/MM/dd HH:mm:ss';
 
   const factory Store({
     required String address,
