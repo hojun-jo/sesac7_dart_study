@@ -33,7 +33,7 @@ extension StoreDtoToModelMapper on StoreDto {
       'plenty' => StoreRemainStatus.plenty,
       'some' => StoreRemainStatus.some,
       'few' => StoreRemainStatus.few,
-      'breaked' => StoreRemainStatus.breaked,
+      'break' => StoreRemainStatus.breaked,
       'empty' => StoreRemainStatus.empty,
       _ => StoreRemainStatus.unknown,
     };
