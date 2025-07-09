@@ -8,16 +8,24 @@ extension StoreDtoToModelMapper on StoreDto {
     return Store(
       address: addr ?? '',
       code: code ?? '',
-      createdAt: createdAt != null ? DateTime.parse(createdAt!) : DateTime(0),
+      createdAt: _stringToDateTime(createdAt),
       lat: lat ?? 0,
       lng: lng ?? 0,
       name: name ?? '',
       remainStatus: remainStat != null
           ? _statusFromString(remainStat!)
-          : StoreRemainStatus.empty,
-      stockAt: stockAt != null ? DateTime.parse(stockAt!) : DateTime(0),
+          : StoreRemainStatus.unknown,
+      stockAt: _stringToDateTime(stockAt),
       type: type ?? '',
     );
+  }
+
+  DateTime _stringToDateTime(String? value) {
+    if (value == null || value == '') {
+      return DateTime(0);
+    }
+
+    return DateTime.parse(value);
   }
 
   StoreRemainStatus _statusFromString(String value) {
@@ -27,7 +35,7 @@ extension StoreDtoToModelMapper on StoreDto {
       'few' => StoreRemainStatus.few,
       'breaked' => StoreRemainStatus.breaked,
       'empty' => StoreRemainStatus.empty,
-      _ => StoreRemainStatus.empty,
+      _ => StoreRemainStatus.unknown,
     };
   }
 }
