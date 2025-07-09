@@ -20,10 +20,8 @@ class StoreRepositoryImpl implements StoreRepository {
     try {
       final response = await _dataSource.getStores();
 
-      if (!_validator.validateStatusCode(response.statusCode)) {
-        return [];
-      }
-      if (response.body.stores == null) {
+      if (!_validator.validateStatusCode(response.statusCode) ||
+          response.body.stores == null) {
         return [];
       }
 
