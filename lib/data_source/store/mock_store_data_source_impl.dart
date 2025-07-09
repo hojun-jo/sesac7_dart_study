@@ -31,7 +31,7 @@ class MockStoreDataSourceImpl implements StoreDataSource {
       {
         "addr": "서울특별시 강북구 삼양로 255 (미아동)",
         "code": "11819723",
-        "created_at": "2020/07/03 11:00:00",
+        "created_at": '',
         "lat": 37.6261612,
         "lng": 127.0180494,
         "name": "청구약국",
@@ -47,7 +47,7 @@ class MockStoreDataSourceImpl implements StoreDataSource {
         "lng": 127.018375,
         "name": "민들레약국",
         "remain_stat": "plenty",
-        "stock_at": "2020/06/29 08:12:00",
+        "stock_at": null,
         "type": "01",
       },
       {
@@ -57,7 +57,7 @@ class MockStoreDataSourceImpl implements StoreDataSource {
         "lat": 37.6297115,
         "lng": 127.0168913,
         "name": "우정약국",
-        "remain_stat": "plenty",
+        "remain_stat": null,
         "stock_at": "2020/07/01 15:35:00",
         "type": "01",
       },
