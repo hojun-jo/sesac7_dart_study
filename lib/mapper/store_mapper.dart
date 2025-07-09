@@ -12,9 +12,7 @@ extension StoreDtoToModelMapper on StoreDto {
       lat: lat ?? 0,
       lng: lng ?? 0,
       name: name ?? '',
-      remainStatus: remainStat != null
-          ? _statusFromString(remainStat!)
-          : StoreRemainStatus.unknown,
+      remainStatus: _statusFromString(remainStat),
       stockAt: _stringToDateTime(stockAt),
       type: type ?? '',
     );
@@ -28,7 +26,7 @@ extension StoreDtoToModelMapper on StoreDto {
     return DateTime.parse(value.replaceAll('/', '-'));
   }
 
-  StoreRemainStatus _statusFromString(String value) {
+  StoreRemainStatus _statusFromString(String? value) {
     return switch (value) {
       'plenty' => StoreRemainStatus.plenty,
       'some' => StoreRemainStatus.some,
