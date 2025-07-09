@@ -3,7 +3,8 @@ enum StoreRemainStatus {
   some,
   few,
   breaked,
-  empty;
+  empty,
+  unknown;
 
   @override
   String toString() {
@@ -13,6 +14,7 @@ enum StoreRemainStatus {
       StoreRemainStatus.few => 'few',
       StoreRemainStatus.breaked => 'break',
       StoreRemainStatus.empty => 'empty',
+      StoreRemainStatus.unknown => '',
     };
   }
 }
