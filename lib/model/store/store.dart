@@ -1,15 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:modu_3_dart_study/model/store/store_remain_status.dart';
 
 part "store.freezed.dart";
 
 @freezed
 class Store with _$Store {
   @override
-  final String addr;
+  final String address;
   @override
   final String code;
   @override
-  final String createdAt;
+  final DateTime createdAt;
   @override
   final double lat;
   @override
@@ -17,20 +18,20 @@ class Store with _$Store {
   @override
   final String name;
   @override
-  final String remainStat;
+  final StoreRemainStatus remainStatus;
   @override
-  final String stockAt;
+  final DateTime stockAt;
   @override
   final String type;
 
   Store({
-    required this.addr,
+    required this.address,
     required this.code,
     required this.createdAt,
     required this.lat,
     required this.lng,
     required this.name,
-    required this.remainStat,
+    required this.remainStatus,
     required this.stockAt,
     required this.type,
   });
