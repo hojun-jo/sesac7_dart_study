@@ -1,4 +1,4 @@
-import 'package:modu_3_dart_study/dto/user/user2_dto.dart';
+import 'package:modu_3_dart_study/dto/user2/user2_dto.dart';
 import 'package:modu_3_dart_study/model/user/user2.dart';
 
 extension User2DtoToModel on User2Dto {
