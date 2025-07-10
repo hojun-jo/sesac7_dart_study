@@ -8,8 +8,8 @@ import 'package:modu_3_dart_study/dto/user2/user2_dto.dart';
 class User2DataSourceImpl implements User2DataSource {
   static const baseUrl =
       'https://gist.githubusercontent.com/ParkGiTeak/87ea13ba3ffced3a6b3e6e6c598f7a3a/raw/b8d3d4071ad6ec83d451f029833ed87c237507a2/image_share_app_users.json';
-  static const contentTypeKey = 'Content-Type; charset=utf-8';
-  static const contentTypeValue = 'application/json';
+  static const contentTypeKey = 'Content-Type';
+  static const contentTypeValue = 'application/json; charset=utf-8';
 
   final http.Client _client;
 
