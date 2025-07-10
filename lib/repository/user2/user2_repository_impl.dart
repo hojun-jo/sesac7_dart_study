@@ -62,6 +62,8 @@ class User2RepositoryImpl implements User2Repository {
       return Result.error(NetworkError.requestTimeout);
     } on FormatException {
       return Result.error(NetworkError.parseError);
+    } on StateError {
+      return Result.error(NetworkError.notFound);
     } catch (e) {
       return Result.error(NetworkError.unknown);
     }
