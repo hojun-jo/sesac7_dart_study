@@ -1,0 +1,9 @@
+import 'package:modu_3_dart_study/core/network_error.dart';
+import 'package:modu_3_dart_study/core/result.dart';
+import 'package:modu_3_dart_study/model/user/user2.dart';
+
+abstract interface class User2Repository {
+  Future<Result<User2, NetworkError>> getUser(int id);
+  Future<Result<User2, NetworkError>> getUsers();
+  Future<Result<User2, NetworkError>> createUser(User2 user);
+}
