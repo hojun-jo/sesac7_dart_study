@@ -21,7 +21,7 @@ class User2DataSourceImpl implements User2DataSource {
     final response = await _client.post(
       Uri.parse(baseUrl),
       headers: {contentTypeKey: contentTypeValue},
-      body: user.toJson(),
+      body: jsonEncode(user.toJson()),
     );
 
     return Response(
