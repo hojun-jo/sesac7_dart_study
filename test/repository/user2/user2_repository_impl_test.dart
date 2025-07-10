@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:modu_3_dart_study/core/network_error.dart';
 import 'package:modu_3_dart_study/core/result.dart';
-import 'package:modu_3_dart_study/data_source/user/user2_data_source.dart';
-import 'package:modu_3_dart_study/model/user/user2.dart';
-import 'package:modu_3_dart_study/repository/user/user2_repository.dart';
-import 'package:modu_3_dart_study/repository/user/user2_repository_impl.dart';
+import 'package:modu_3_dart_study/data_source/user2/user2_data_source.dart';
+import 'package:modu_3_dart_study/model/user2/user2.dart';
+import 'package:modu_3_dart_study/repository/user2/user2_repository.dart';
+import 'package:modu_3_dart_study/repository/user2/user2_repository_impl.dart';
 import 'package:test/test.dart';
 
 import '../../mocks/mock_user2_data_source_impl.dart';
@@ -16,7 +16,13 @@ void main() {
     dataSource: dataSource,
   );
   final userId = 1;
-  final user = User2(id: userId, name: 'name1');
+  final user = User2(
+    id: userId,
+    name: 'Alice Smith',
+    age: 28,
+    address: '123 Maple St, Anytown',
+    phoneNumber: '555-123-4567',
+  );
 
   group(
     'createUser',
@@ -215,9 +221,21 @@ void main() {
         () async {
           // given
           final users = [
-            User2(id: 1, name: 'name1'),
-            User2(id: 2, name: 'name2'),
-            User2(id: 3, name: 'name3'),
+            user,
+            User2(
+              id: 2,
+              name: "Bob Johnson",
+              age: 34,
+              address: "456 Oak Ave, Somewhere",
+              phoneNumber: "555-987-6543",
+            ),
+            User2(
+              id: 3,
+              name: "Charlie Brown",
+              age: 22,
+              address: "789 Pine Ln, Nowhere",
+              phoneNumber: "555-111-2222",
+            ),
           ];
 
           // when

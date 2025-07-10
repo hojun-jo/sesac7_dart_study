@@ -1,12 +1,30 @@
 import 'package:modu_3_dart_study/core/response.dart';
-import 'package:modu_3_dart_study/data_source/user/user2_data_source.dart';
+import 'package:modu_3_dart_study/data_source/user2/user2_data_source.dart';
 import 'package:modu_3_dart_study/dto/user2/user2_dto.dart';
 
 class MockUser2DataSourceImpl implements User2DataSource {
   final jsons = [
-    {'id': 1, 'name': 'name1'},
-    {'id': 2, 'name': 'name2'},
-    {'id': 3, 'name': 'name3'},
+    {
+      "id": 1,
+      "name": "Alice Smith",
+      "age": 28,
+      "address": "123 Maple St, Anytown",
+      "phoneNumber": "555-123-4567",
+    },
+    {
+      "id": 2,
+      "name": "Bob Johnson",
+      "age": 34,
+      "address": "456 Oak Ave, Somewhere",
+      "phoneNumber": "555-987-6543",
+    },
+    {
+      "id": 3,
+      "name": "Charlie Brown",
+      "age": 22,
+      "address": "789 Pine Ln, Nowhere",
+      "phoneNumber": "555-111-2222",
+    },
   ];
   final int statusCode;
   final Exception? exception;
