@@ -127,7 +127,7 @@ void main() {
       );
 
       test(
-        'Returns NetworkError.unknown if no user with a matching id exists.',
+        'Returns NetworkError.notFound if no user with a matching id exists.',
         () async {
           // given
           final wrongId = -1;
@@ -138,7 +138,7 @@ void main() {
           // then
           expect(
             result,
-            Result<User2, NetworkError>.error(NetworkError.unknown),
+            Result<User2, NetworkError>.error(NetworkError.notFound),
           );
         },
       );
