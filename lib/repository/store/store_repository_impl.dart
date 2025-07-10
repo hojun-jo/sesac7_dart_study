@@ -1,4 +1,7 @@
+import 'package:modu_3_dart_study/core/network_error.dart';
 import 'package:modu_3_dart_study/core/network_validator.dart';
+import 'package:modu_3_dart_study/core/network_validator_impl.dart';
+import 'package:modu_3_dart_study/core/result.dart';
 import 'package:modu_3_dart_study/data_source/store/store_data_source.dart';
 import 'package:modu_3_dart_study/mapper/store_mapper.dart';
 import 'package:modu_3_dart_study/model/store/store.dart';
@@ -13,27 +16,28 @@ class StoreRepositoryImpl implements StoreRepository {
     required StoreDataSource dataSource,
     NetworkValidator? validator,
   }) : _dataSource = dataSource,
-       _validator = validator ?? NetworkValidator();
+       _validator = validator ?? NetworkValidatorImpl();
 
   @override
   Future<List<Store>> getStores() async {
     try {
       final response = await _dataSource.getStores();
+      final result = _validator.validateStatusCode(response.statusCode);
 
-      if (!_validator.validateStatusCode(response.statusCode) ||
-          response.body.stores == null) {
-        return [];
+      switch (result) {
+        case Success<void, NetworkError>():
+          return response.body.stores!
+              .map((dto) => dto.toModel())
+              .where(
+                (e) =>
+                    e.remainStatus != StoreRemainStatus.unknown &&
+                    e.stockAt != Store.unknownDate &&
+                    e.createdAt != Store.unknownDate,
+              )
+              .toList();
+        case Error<void, NetworkError>():
+          return [];
       }
-
-      return response.body.stores!
-          .map((dto) => dto.toModel())
-          .where(
-            (e) =>
-                e.remainStatus != StoreRemainStatus.unknown &&
-                e.stockAt != Store.unknownDate &&
-                e.createdAt != Store.unknownDate,
-          )
-          .toList();
     } catch (e) {
       return [];
     }
