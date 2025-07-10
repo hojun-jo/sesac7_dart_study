@@ -10,6 +10,8 @@ import 'package:modu_3_dart_study/model/user/user2.dart';
 import 'package:modu_3_dart_study/repository/user/user2_repository.dart';
 
 class User2RepositoryImpl implements User2Repository {
+  static const timeLimit = Duration(seconds: 10);
+
   final User2DataSource _dataSource;
   final NetworkValidator _networkValidator;
 
@@ -22,12 +24,14 @@ class User2RepositoryImpl implements User2Repository {
   @override
   Future<Result<User2, NetworkError>> createUser(User2 user) async {
     try {
-      final response = await _dataSource.createUser(user.toDto());
+      final response = await _dataSource
+          .createUser(user.toDto())
+          .timeout(timeLimit);
       final result = _networkValidator.validateStatusCode(response.statusCode);
 
       switch (result) {
         case Success<void, NetworkError>():
-          return Result.success(response.body.toModel());
+          return Result.success(user);
         case Error<void, NetworkError>():
           return Result.error(result.error);
       }
@@ -43,7 +47,7 @@ class User2RepositoryImpl implements User2Repository {
   @override
   Future<Result<User2, NetworkError>> getUser(int id) async {
     try {
-      final response = await _dataSource.getUsers();
+      final response = await _dataSource.getUsers().timeout(timeLimit);
       final result = _networkValidator.validateStatusCode(response.statusCode);
 
       switch (result) {
@@ -66,7 +70,7 @@ class User2RepositoryImpl implements User2Repository {
   @override
   Future<Result<List<User2>, NetworkError>> getUsers() async {
     try {
-      final response = await _dataSource.getUsers();
+      final response = await _dataSource.getUsers().timeout(timeLimit);
       final result = _networkValidator.validateStatusCode(response.statusCode);
 
       switch (result) {
