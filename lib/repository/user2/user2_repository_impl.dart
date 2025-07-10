@@ -4,10 +4,10 @@ import 'package:modu_3_dart_study/core/network_error.dart';
 import 'package:modu_3_dart_study/core/network_validator.dart';
 import 'package:modu_3_dart_study/core/network_validator_impl.dart';
 import 'package:modu_3_dart_study/core/result.dart';
-import 'package:modu_3_dart_study/data_source/user/user2_data_source.dart';
+import 'package:modu_3_dart_study/data_source/user2/user2_data_source.dart';
 import 'package:modu_3_dart_study/mapper/user2_mapper.dart';
-import 'package:modu_3_dart_study/model/user/user2.dart';
-import 'package:modu_3_dart_study/repository/user/user2_repository.dart';
+import 'package:modu_3_dart_study/model/user2/user2.dart';
+import 'package:modu_3_dart_study/repository/user2/user2_repository.dart';
 
 class User2RepositoryImpl implements User2Repository {
   static const timeLimit = Duration(seconds: 10);
