@@ -15,7 +15,7 @@ void main() {
         final wrongCode = 199;
 
         // when
-        final result = validator.validateStatusCode(wrongCode);
+        final result = validator.checkStatusCodeError(wrongCode);
 
         // then
         expect(result, Result<void, NetworkError>.error(NetworkError.unknown));
@@ -26,7 +26,7 @@ void main() {
         final validCode = 200;
 
         // when
-        final result = validator.validateStatusCode(validCode);
+        final result = validator.checkStatusCodeError(validCode);
 
         // then
         expect(result, Result<void, NetworkError>.success(null));
@@ -37,7 +37,7 @@ void main() {
         final validCode = 299;
 
         // when
-        final result = validator.validateStatusCode(validCode);
+        final result = validator.checkStatusCodeError(validCode);
 
         // then
         expect(result, Result<void, NetworkError>.success(null));
@@ -48,7 +48,7 @@ void main() {
         final wrongCode = 300;
 
         // when
-        final result = validator.validateStatusCode(wrongCode);
+        final result = validator.checkStatusCodeError(wrongCode);
 
         // then
         expect(result, Result<void, NetworkError>.error(NetworkError.unknown));
@@ -59,7 +59,7 @@ void main() {
         final unauthorizedCode = 401;
 
         // when
-        final result = validator.validateStatusCode(unauthorizedCode);
+        final result = validator.checkStatusCodeError(unauthorizedCode);
 
         // then
         expect(
@@ -73,7 +73,7 @@ void main() {
         final notFoundCode = 404;
 
         // when
-        final result = validator.validateStatusCode(notFoundCode);
+        final result = validator.checkStatusCodeError(notFoundCode);
 
         // then
         expect(result, Result<void, NetworkError>.error(NetworkError.notFound));
@@ -84,7 +84,7 @@ void main() {
         final wrongCode = 499;
 
         // when
-        final result = validator.validateStatusCode(wrongCode);
+        final result = validator.checkStatusCodeError(wrongCode);
 
         // then
         expect(result, Result<void, NetworkError>.error(NetworkError.unknown));
@@ -95,7 +95,7 @@ void main() {
         final serverErrorCode = 500;
 
         // when
-        final result = validator.validateStatusCode(serverErrorCode);
+        final result = validator.checkStatusCodeError(serverErrorCode);
 
         // then
         expect(
@@ -109,7 +109,7 @@ void main() {
         final serverErrorCode = 599;
 
         // when
-        final result = validator.validateStatusCode(serverErrorCode);
+        final result = validator.checkStatusCodeError(serverErrorCode);
 
         // then
         expect(
@@ -123,7 +123,7 @@ void main() {
         final wrongCode = 600;
 
         // when
-        final result = validator.validateStatusCode(wrongCode);
+        final result = validator.checkStatusCodeError(wrongCode);
 
         // then
         expect(result, Result<void, NetworkError>.error(NetworkError.unknown));

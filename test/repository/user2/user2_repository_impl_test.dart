@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:modu_3_dart_study/core/network_error.dart';
+import 'package:modu_3_dart_study/core/network_validator_impl.dart';
 import 'package:modu_3_dart_study/core/result.dart';
 import 'package:modu_3_dart_study/data_source/user2/user2_data_source.dart';
 import 'package:modu_3_dart_study/model/user2/user2.dart';
@@ -14,6 +15,7 @@ void main() {
   final User2DataSource dataSource = MockUser2DataSourceImpl(statusCode: 200);
   final User2Repository repository = User2RepositoryImpl(
     dataSource: dataSource,
+    validator: NetworkValidatorImpl(),
   );
   final userId = 1;
   final user = User2(
@@ -33,7 +35,12 @@ void main() {
           // given
 
           // when
-          final result = await repository.createUser(user);
+          final result = await repository.createUser(
+            name: user.name,
+            age: user.age,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+          );
 
           // then
           expect(result, Result<User2, NetworkError>.success(user));
@@ -49,10 +56,16 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
-          final result = await repository.createUser(user);
+          final result = await repository.createUser(
+            name: user.name,
+            age: user.age,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+          );
 
           // then
           expect(
@@ -72,10 +85,16 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
-          final result = await repository.createUser(user);
+          final result = await repository.createUser(
+            name: user.name,
+            age: user.age,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+          );
 
           // then
           expect(
@@ -95,10 +114,16 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
-          final result = await repository.createUser(user);
+          final result = await repository.createUser(
+            name: user.name,
+            age: user.age,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+          );
 
           // then
           expect(
@@ -152,6 +177,7 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
@@ -175,6 +201,7 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
@@ -198,6 +225,7 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
@@ -255,6 +283,7 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
@@ -278,6 +307,7 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
@@ -303,6 +333,7 @@ void main() {
           );
           final User2Repository repository = User2RepositoryImpl(
             dataSource: dataSource,
+            validator: NetworkValidatorImpl(),
           );
 
           // when
