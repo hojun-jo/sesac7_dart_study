@@ -1,7 +1,4 @@
-import 'package:modu_3_dart_study/core/network_error.dart';
 import 'package:modu_3_dart_study/core/network_validator.dart';
-import 'package:modu_3_dart_study/core/network_validator_impl.dart';
-import 'package:modu_3_dart_study/core/result.dart';
 import 'package:modu_3_dart_study/data_source/photo2/photo2_data_source.dart';
 import 'package:modu_3_dart_study/mapper/photo2_mapper.dart';
 import 'package:modu_3_dart_study/model/photo2/photo2.dart';
@@ -13,22 +10,21 @@ class Photo2RepositoryImpl implements Photo2Repository {
 
   Photo2RepositoryImpl({
     required Photo2DataSource dataSource,
-    NetworkValidator? validator,
+    required NetworkValidator validator,
   }) : _dataSource = dataSource,
-       _validator = validator ?? NetworkValidatorImpl();
+       _validator = validator;
 
   @override
   Future<List<Photo2>> getPhotos() async {
     try {
       final response = await _dataSource.getPhotos();
-      final result = _validator.validateStatusCode(response.statusCode);
+      final error = _validator.checkStatusCodeError(response.statusCode);
 
-      switch (result) {
-        case Success<void, NetworkError>():
-          return response.body.map((dto) => dto.toModel()).toList();
-        case Error<void, NetworkError>():
-          return [];
+      if (error != null) {
+        return [];
       }
+
+      return response.body.map((dto) => dto.toModel()).toList();
     } catch (e) {
       return [];
     }
